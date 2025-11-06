@@ -1,0 +1,688 @@
+/*
+===============================================
+BÀI 2: CSS SELECTORS & FLOAT LAYOUT
+===============================================
+Học các kỹ thuật CSS cơ bản nhưng quan trọng:
+- CSS Selectors nâng cao
+- Float layout truyền thống  
+- Box model và positioning
+- Không sử dụng Flexbox/Grid
+===============================================
+*/
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== CLEARFIX UTILITY ===== */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.site-header .container {
+  position: relative;
+}
+
+.logo {
+  float: left;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.main-nav {
+  float: right;
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  float: left;
+  margin-left: 2rem;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #ffd700;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: white;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.hero-left {
+  float: left;
+  width: 60%;
+  padding-right: 3rem;
+}
+
+.hero-right {
+  float: right;
+  width: 40%;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.hero-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.hero-features li {
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #27ae60;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Code Demo Styles */
+.code-demo {
+  background: #2d3748;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.code-header {
+  background: #4a5568;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.code-content {
+  padding: 1.5rem;
+  color: #e2e8f0;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.comment { color: #68d391; }
+.selector { color: #fbb6ce; }
+.property { color: #90cdf4; }
+.value { color: #fed7d7; }
+
+/* ===== SECTIONS ===== */
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #3498db;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ===== SELECTORS SECTION ===== */
+.selectors-section {
+  background: white;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.selector-grid::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.selector-card {
+  float: left;
+  width: 48%;
+  margin-right: 2%;
+  margin-bottom: 2rem;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.selector-card:nth-child(even) {
+  margin-right: 0;
+}
+
+.selector-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.selector-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.code-block {
+  background: #2d3748;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  color: #e2e8f0;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.selector-card p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* ===== LAYOUT SECTION ===== */
+.layout-section {
+  background: #f8f9fa;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.layout-explanation {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.explanation-left {
+  float: left;
+  width: 55%;
+  padding-right: 2rem;
+}
+
+.explanation-right {
+  float: right;
+  width: 45%;
+}
+
+.explanation-left h3 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.explanation-left h4 {
+  color: #34495e;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.explanation-left ul {
+  padding-left: 1.5rem;
+}
+
+.explanation-left li {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+/* Float Demo */
+.float-demo {
+  background: #2d3748;
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+}
+
+.demo-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+
+.demo-container {
+  background: white;
+  border-radius: 5px;
+  padding: 1rem;
+  min-height: 200px;
+  position: relative;
+}
+
+.demo-header {
+  background: #3498db;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+}
+
+.demo-sidebar {
+  float: left;
+  width: 30%;
+  background: #e74c3c;
+  color: white;
+  padding: 1rem;
+  margin-right: 2%;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.demo-content {
+  float: right;
+  width: 68%;
+  background: #27ae60;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.demo-footer {
+  clear: both;
+  background: #34495e;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  border-radius: 3px;
+}
+
+/* ===== PRACTICE SECTION ===== */
+.practice-section {
+  background: white;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.practice-layout {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.practice-main {
+  float: left;
+  width: 68%;
+  margin-right: 2%;
+}
+
+.practice-sidebar {
+  float: right;
+  width: 30%;
+}
+
+/* Blog Post Styles */
+.blog-post {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.blog-post h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.read-more {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar Styles */
+.sidebar-widget {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-widget h4 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.sidebar-widget ul {
+  list-style: none;
+}
+
+.sidebar-widget li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-widget a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.sidebar-widget a:hover {
+  text-decoration: underline;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.search-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.search-btn:hover {
+  background: #2980b9;
+}
+
+/* ===== TIPS SECTION ===== */
+.tips-section {
+  background: #f8f9fa;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+}
+
+.tips-grid::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.tip-card {
+  float: left;
+  width: 48%;
+  margin-right: 2%;
+  margin-bottom: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.tip-card:nth-child(even) {
+  margin-right: 0;
+}
+
+.tip-card:hover {
+  transform: translateY(-3px);
+}
+
+.tip-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tip-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.tip-card ul {
+  padding-left: 1.5rem;
+}
+
+.tip-card li {
+  margin-bottom: 0.25rem;
+  color: #666;
+}
+
+/* ===== NEXT STEPS ===== */
+.next-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.next-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.next-section > p {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.next-steps::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.next-step {
+  float: left;
+  width: 30%;
+  margin-right: 3.33%;
+  background: rgba(255,255,255,0.1);
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.next-step:last-child {
+  margin-right: 0;
+}
+
+.next-step h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.next-step p {
+  opacity: 0.9;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: #2c3e50;
+  color: white;
+  padding: 2rem 0;
+}
+
+.footer-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer-left {
+  float: left;
+  width: 60%;
+}
+
+.footer-right {
+  float: right;
+  width: 40%;
+  text-align: right;
+}
+
+.footer-left h3 {
+  margin-bottom: 0.5rem;
+  color: #3498db;
+}
+
+.footer-left p {
+  opacity: 0.8;
+}
+
+.footer-right p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE DESIGN (Basic) ===== */
+@media (max-width: 768px) {
+  .hero-left,
+  .hero-right,
+  .explanation-left,
+  .explanation-right,
+  .practice-main,
+  .practice-sidebar,
+  .footer-left,
+  .footer-right {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .selector-card,
+  .tip-card {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .next-step {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .main-nav {
+    float: none;
+    clear: both;
+    margin-top: 1rem;
+  }
+
+  .main-nav li {
+    float: none;
+    margin-left: 0;
+    margin-right: 1rem;
+    display: inline-block;
+  }
+
+  .logo {
+    float: none;
+    text-align: center;
+  }
+
+  .demo-sidebar,
+  .demo-content {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .selectors-section,
+  .layout-section,
+  .practice-section,
+  .tips-section {
+    padding: 2rem 0;
+  }
+
+  .layout-explanation,
+  .practice-layout {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Utility Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              200: '#c7d2fe',
+              500: '#6366f1',
+              700: '#4338ca'
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+  <header class="max-w-5xl mx-auto px-6 py-20 text-center">
+    <span class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-brand-500/20 text-brand-200 uppercase tracking-[0.3em] text-xs">Tailwind demo</span>
+    <h1 class="mt-6 text-4xl md:text-5xl font-semibold">Utility-first workflow</h1>
+    <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Ghép các tiện ích Tailwind để xây dựng layout nhanh chóng, sử dụng gradient, glassmorphism và dark mode.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="#sections" class="px-6 py-3 rounded-full bg-brand-500 text-white font-medium shadow-lg shadow-brand-500/30 hover:bg-brand-700 transition">Khám phá section</a>
+      <a href="#components" class="px-6 py-3 rounded-full border border-slate-700 text-slate-200 hover:bg-slate-800 transition">Xem component</a>
+    </div>
+  </header>
+
+  <main id="sections" class="max-w-5xl mx-auto px-6 pb-20 space-y-12">
+    <section class="grid gap-6 md:grid-cols-2">
+      <div class="rounded-3xl bg-white/5 border border-white/10 p-8 backdrop-blur">
+        <h2 class="text-2xl font-semibold">Glass Section</h2>
+        <p class="mt-3 text-slate-300">Sử dụng <code>bg-white/5</code> kết hợp <code>backdrop-blur</code> để tạo hiệu ứng mờ.</p>
+      </div>
+      <div class="rounded-3xl bg-gradient-to-br from-brand-500/40 to-emerald-400/30 p-[1px]">
+        <div class="rounded-[calc(24px-1px)] bg-slate-950/90 h-full p-8">
+          <h2 class="text-2xl font-semibold">Gradient Border</h2>
+          <p class="mt-3 text-slate-300">Kỹ thuật bọc div với padding 1px để tạo viền gradient.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="rounded-3xl bg-white/5 border border-white/10 p-8">
+      <h2 class="text-2xl font-semibold">Component Buttons</h2>
+      <div class="mt-6 flex flex-wrap gap-4">
+        <button class="px-5 py-3 rounded-xl bg-brand-500 hover:bg-brand-700 transition font-medium">Primary</button>
+        <button class="px-5 py-3 rounded-xl bg-transparent border border-white/20 hover:border-white/40 transition">Ghost</button>
+        <button class="px-5 py-3 rounded-xl bg-white/10 text-white shadow-inner">Soft</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

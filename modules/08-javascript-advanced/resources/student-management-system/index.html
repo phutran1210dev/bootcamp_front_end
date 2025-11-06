@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System - Quản lý Sinh viên</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Student Management</h1>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalStudents">0</span>
+                        <span class="stat-label">Tổng SV</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="maleStudents">0</span>
+                        <span class="stat-label">Nam</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="femaleStudents">0</span>
+                        <span class="stat-label">Nữ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <section class="learning-roadmap" id="roadmap">
+                <div class="roadmap-header">
+                    <h2>
+                        <i class="fas fa-route"></i>
+                        Lộ trình cập nhật hệ thống quản lý sinh viên
+                    </h2>
+                    <p>Tuân theo README để hoàn thiện `index.html` từ bố cục cơ bản đến dashboard nâng cao.</p>
+                </div>
+                <div class="roadmap-grid">
+                    <article class="roadmap-card roadmap-card--foundation">
+                        <span class="roadmap-stage">Giai đoạn 1 – Data Layer</span>
+                        <h3>Thiết lập bảng &amp; modal CRUD</h3>
+                        <ul>
+                            <li>Tạo bảng sinh viên với header đầy đủ cột CRUD.</li>
+                            <li>Chuẩn bị modal thêm/sửa và các `input` có `id`/`name` chuẩn.</li>
+                            <li>Thêm empty state &amp; nút thêm sinh viên như Guided Practice 1.</li>
+                        </ul>
+                    </article>
+                    <article class="roadmap-card roadmap-card--intermediate">
+                        <span class="roadmap-stage">Giai đoạn 2 – Tương tác UI</span>
+                        <h3>Bộ lọc, tìm kiếm &amp; phân trang</h3>
+                        <ul>
+                            <li>Bố trí thanh tìm kiếm, filter giới tính và select sắp xếp.</li>
+                            <li>Chuẩn bị khu vực phân trang, page size, bulk actions.</li>
+                            <li>Liên kết các `id` (`searchInput`, `pagination`, ...) để JS dễ thao tác.</li>
+                        </ul>
+                    </article>
+                    <article class="roadmap-card roadmap-card--advanced">
+                        <span class="roadmap-stage">Giai đoạn 3 – Dashboard nâng cao</span>
+                        <h3>Thống kê &amp; trải nghiệm nâng cao</h3>
+                        <ul>
+                            <li>Thêm khối thống kê nhanh trong header theo README.</li>
+                            <li>Đặt placeholder cho toast, export/import JSON, bulk confirm.</li>
+                            <li>Kết nối Lab Challenge bằng khu vực widget/dashboard mở rộng.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="controls-left">
+                    <button class="btn btn-primary" id="addStudentBtn">
+                        <i class="fas fa-plus"></i>
+                        Thêm sinh viên
+                    </button>
+                    <button class="btn btn-secondary" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        Xuất dữ liệu
+                    </button>
+                    <button class="btn btn-secondary" id="importBtn">
+                        <i class="fas fa-upload"></i>
+                        Nhập dữ liệu
+                    </button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+                
+                <div class="controls-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên, MSSV, email...">
+                        <button id="clearSearch" class="clear-search">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="filter-box">
+                        <select id="genderFilter">
+                            <option value="">Tất cả giới tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="sort-box">
+                        <select id="sortBy">
+                            <option value="name">Sắp xếp theo tên</option>
+                            <option value="studentId">Sắp xếp theo MSSV</option>
+                            <option value="age">Sắp xếp theo tuổi</option>
+                            <option value="gpa">Sắp xếp theo GPA</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students Table -->
+            <section class="table-section">
+                <div class="table-container">
+                    <table class="students-table" id="studentsTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>MSSV</th>
+                                <th>Họ và tên</th>
+                                <th>Email</th>
+                                <th>Giới tính</th>
+                                <th>Tuổi</th>
+                                <th>Điện thoại</th>
+                                <th>Khoa</th>
+                                <th>GPA</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Students data will be inserted here -->
+                        </tbody>
+                    </table>
+                    
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Chưa có sinh viên nào</h3>
+                        <p>Hãy thêm sinh viên đầu tiên vào hệ thống</p>
+                        <button class="btn btn-primary" onclick="openAddModal()">
+                            <i class="fas fa-plus"></i>
+                            Thêm sinh viên
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bulk Actions -->
+                <div class="bulk-actions" id="bulkActions">
+                    <div class="bulk-info">
+                        <span id="selectedCount">0</span> sinh viên được chọn
+                    </div>
+                    <div class="bulk-buttons">
+                        <button class="btn btn-danger" id="deleteSelectedBtn">
+                            <i class="fas fa-trash"></i>
+                            Xóa đã chọn
+                        </button>
+                        <button class="btn btn-secondary" id="exportSelectedBtn">
+                            <i class="fas fa-download"></i>
+                            Xuất đã chọn
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pagination -->
+            <section class="pagination-section">
+                <div class="pagination-info">
+                    Hiển thị <span id="showingFrom">0</span> - <span id="showingTo">0</span> 
+                    trong tổng số <span id="totalRecords">0</span> sinh viên
+                </div>
+                <div class="pagination" id="pagination">
+                    <!-- Pagination buttons will be generated here -->
+                </div>
+                <div class="page-size">
+                    <label for="pageSize">Hiển thị:</label>
+                    <select id="pageSize">
+                        <option value="10">10</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span>/ trang</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add/Edit Student Modal -->
+    <div class="modal" id="studentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Thêm sinh viên mới</h2>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form class="modal-body" id="studentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="studentId">MSSV <span class="required">*</span></label>
+                        <input type="text" id="studentId" name="studentId" required 
+                               placeholder="Ví dụ: SV001" pattern="[A-Za-z0-9]+">
+                        <div class="error-message" id="studentIdError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Họ và tên <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required 
+                               placeholder="Nguyễn Văn A" pattern="[A-Za-z\s\u00C0-\u024F]+">
+                        <div class="error-message" id="fullNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="student@example.com">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Điện thoại</label>
+                        <input type="tel" id="phone" name="phone" 
+                               placeholder="0123456789" pattern="[0-9]{10,11}">
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Giới tính <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Chọn giới tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                        <div class="error-message" id="genderError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthDate">Ngày sinh</label>
+                        <input type="date" id="birthDate" name="birthDate">
+                        <div class="error-message" id="birthDateError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Khoa</label>
+                        <select id="department" name="department">
+                            <option value="">Chọn khoa</option>
+                            <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+                            <option value="Kinh tế">Kinh tế</option>
+                            <option value="Kỹ thuật">Kỹ thuật</option>
+                            <option value="Y học">Y học</option>
+                            <option value="Luật">Luật</option>
+                            <option value="Ngoại ngữ">Ngoại ngữ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                        <div class="error-message" id="departmentError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gpa">GPA</label>
+                        <input type="number" id="gpa" name="gpa" 
+                               min="0" max="4" step="0.01" placeholder="3.50">
+                        <div class="error-message" id="gpaError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="status">Trạng thái</label>
+                        <select id="status" name="status">
+                            <option value="Đang học">Đang học</option>
+                            <option value="Tạm nghỉ">Tạm nghỉ</option>
+                            <option value="Đã tốt nghiệp">Đã tốt nghiệp</option>
+                            <option value="Thôi học">Thôi học</option>
+                        </select>
+                        <div class="error-message" id="statusError"></div>
+                    </div>
+                    
+                    <div class="form-group form-group-full">
+                        <label for="address">Địa chỉ</label>
+                        <textarea id="address" name="address" rows="3" 
+                                  placeholder="Địa chỉ chi tiết"></textarea>
+                        <div class="error-message" id="addressError"></div>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelBtn">Hủy</button>
+                <button type="submit" class="btn btn-primary" id="saveBtn" form="studentForm">
+                    <i class="fas fa-save"></i>
+                    Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3 id="confirmTitle">Xác nhận</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Bạn có chắc chắn muốn thực hiện hành động này?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="confirmCancel">Hủy</button>
+                <button type="button" class="btn btn-danger" id="confirmOk">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer">
+        <!-- Toast messages will be inserted here -->
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Đang xử lý...</p>
+    </div>
+
+    <script src="js/student.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

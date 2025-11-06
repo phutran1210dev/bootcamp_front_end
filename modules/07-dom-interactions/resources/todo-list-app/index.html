@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App - Quản lý công việc</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>
+                <i class="fas fa-tasks"></i>
+                Todo List App
+            </h1>
+            <p class="subtitle">Quản lý công việc hiệu quả với localStorage</p>
+        </header>
+
+        <main class="app-main">
+            <section class="learning-roadmap" id="roadmap">
+                <h2 class="roadmap__title">
+                    <i class="fas fa-route"></i>
+                    Lộ trình cập nhật Todo List
+                </h2>
+                <p class="roadmap__subtitle">Theo README, cập nhật `index.html` và các module theo ba giai đoạn: nền tảng, mở rộng chức năng và tối ưu trải nghiệm.</p>
+                <div class="roadmap__grid">
+                    <article class="roadmap__card roadmap__card--foundation">
+                        <div class="roadmap__badge">Giai đoạn 1</div>
+                        <h3>Nền tảng CRUD</h3>
+                        <p>Xây dựng layout, form thêm task và trạng thái rỗng.</p>
+                        <ul>
+                            <li>Thiết lập header, form nhập và danh sách task.</li>
+                            <li>Gắn template `<template id="taskTemplate">` cho render động.</li>
+                            <li>Thêm empty state theo hướng dẫn Guided Practice 1.</li>
+                        </ul>
+                    </article>
+                    <article class="roadmap__card roadmap__card--intermediate">
+                        <div class="roadmap__badge">Giai đoạn 2</div>
+                        <h3>Filters &amp; Statistics</h3>
+                        <p>Mở rộng HTML cho bộ lọc, counter và thao tác bulk.</p>
+                        <ul>
+                            <li>Thêm các nút filter (All/Pending/Completed) và bộ đếm.</li>
+                            <li>Bổ sung nút xoá hoàn thành, bulk actions và counters.</li>
+                            <li>Chuẩn bị hook cho Dark/Light mode theo README.</li>
+                        </ul>
+                    </article>
+                    <article class="roadmap__card roadmap__card--advanced">
+                        <div class="roadmap__badge">Giai đoạn 3</div>
+                        <h3>Tối ưu trải nghiệm</h3>
+                        <p>Thêm placeholder cho toast, theme toggle và tài nguyên.</p>
+                        <ul>
+                            <li>Tạo khu vực thông báo/trạng thái để kết nối với script.</li>
+                            <li>Để sẵn nút chuyển theme, modal xác nhận theo lab.</li>
+                            <li>Liên kết tới README: checklist kiểm thử, tài nguyên.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+            <!-- Form thêm task mới -->
+            <section class="add-task-section">
+                <form id="todoForm" class="todo-form">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="taskInput" 
+                            placeholder="Nhập công việc cần làm..." 
+                            required
+                            autocomplete="off"
+                        >
+                        <button type="submit" class="btn-add">
+                            <i class="fas fa-plus"></i>
+                            Thêm
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Bộ lọc và thống kê -->
+            <section class="filter-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i>
+                        Tất cả (<span id="countAll">0</span>)
+                    </button>
+                    <button class="filter-btn" data-filter="pending">
+                        <i class="fas fa-clock"></i>
+                        Chưa xong (<span id="countPending">0</span>)
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check-circle"></i>
+                        Hoàn thành (<span id="countCompleted">0</span>)
+                    </button>
+                </div>
+                
+                <div class="actions">
+                    <button id="clearCompleted" class="btn-clear">
+                        <i class="fas fa-trash"></i>
+                        Xóa đã hoàn thành
+                    </button>
+                </div>
+            </section>
+
+            <!-- Danh sách công việc -->
+            <section class="todo-list-section">
+                <ul id="todoList" class="todo-list">
+                    <!-- Tasks sẽ được thêm bằng JavaScript -->
+                </ul>
+                
+                <!-- Thông báo khi không có task -->
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Chưa có công việc nào</h3>
+                    <p>Hãy thêm công việc đầu tiên của bạn!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>
+                <i class="fas fa-save"></i>
+                Dữ liệu được lưu tự động trong trình duyệt
+            </p>
+        </footer>
+    </div>
+
+    <!-- Template cho task item -->
+    <template id="taskTemplate">
+        <li class="task-item" data-id="">
+            <div class="task-content">
+                <input type="checkbox" class="task-checkbox" id="">
+                <label class="task-label" for="">
+                    <span class="task-text"></span>
+                </label>
+            </div>
+            <div class="task-actions">
+                <button class="btn-edit" title="Sửa">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn-delete" title="Xóa">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </li>
+    </template>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

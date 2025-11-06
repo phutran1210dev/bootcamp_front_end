@@ -1,0 +1,361 @@
+/* Custom styles for Bootstrap Learning */
+
+/* Font and base styles */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Custom gradients */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Hero section */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-visual {
+    position: relative;
+    z-index: 2;
+}
+
+/* Bootstrap demo container */
+.bootstrap-demo-container {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Feature icons */
+.feature-icon {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-icon:hover {
+    transform: translateY(-5px);
+}
+
+/* Code examples */
+.code-example {
+    position: relative;
+    overflow: hidden;
+}
+
+.code-example pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.code-example code {
+    color: #e6e6e6;
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+}
+
+.code-dot {
+    flex-shrink: 0;
+}
+
+/* Custom cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Interactive grid demo */
+#grid-demo {
+    transition: all 0.3s ease;
+}
+
+#grid-demo .col-12,
+#grid-demo .col-md-6,
+#grid-demo .col-md-4 {
+    transition: all 0.3s ease;
+}
+
+/* Utility demo styles */
+.utility-demo {
+    border: 2px dashed #dee2e6;
+    border-radius: 0.375rem;
+    position: relative;
+}
+
+.utility-demo::before {
+    content: 'Demo';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    padding: 0 8px;
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Custom button styles */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Custom navbar */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Section spacing */
+section {
+    position: relative;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .hero-section .display-3 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-visual {
+        margin-top: 3rem;
+    }
+    
+    .bootstrap-demo-container {
+        animation: none;
+    }
+}
+
+/* Custom badges */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+}
+
+.roadmap-card {
+    border-top: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roadmap-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.6), rgba(118, 75, 162, 0.6));
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.roadmap-card:hover::after {
+    opacity: 0.12;
+}
+
+.roadmap-card--foundation {
+    border-top-color: #667eea;
+}
+
+.roadmap-card--intermediate {
+    border-top-color: #10b981;
+}
+
+.roadmap-card--advanced {
+    border-top-color: #0ea5e9;
+}
+
+.roadmap-list li {
+    padding-left: 1.75rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+}
+
+.roadmap-list li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: #16a34a;
+}
+
+/* Table improvements */
+.table-responsive {
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-top: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Custom alerts */
+.alert {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Interactive elements */
+.nav-tabs .nav-link {
+    border-radius: 8px 8px 0 0;
+    margin-right: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: white;
+    border-color: #dee2e6 #dee2e6 white;
+}
+
+/* Custom progress bars */
+.progress {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 0.6s ease;
+}
+
+/* Footer styles */
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #adb5bd !important;
+}
+
+/* Smooth scroll offset for fixed navbar */
+html {
+    scroll-padding-top: 76px;
+}
+
+/* Custom spacing for mobile */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .d-flex.gap-3.flex-wrap {
+        flex-direction: column;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .hero-section,
+    footer {
+        display: none;
+    }
+    
+    .container {
+        max-width: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn {
+        border-width: 2px;
+    }
+    
+    .card {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .bootstrap-demo-container {
+        animation: none;
+    }
+}

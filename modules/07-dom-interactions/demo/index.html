@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Interactions Demo</title>
+  <style>
+    body { margin:0; font-family:"Inter",system-ui,sans-serif; background:#020617; color:#e2e8f0; min-height:100vh; display:grid; place-items:center; }
+    .board { background:rgba(15,23,42,0.85); border-radius:24px; padding:2.5rem; width:min(520px,90vw); box-shadow:0 30px 90px -45px rgba(15,23,42,0.95); display:grid; gap:1.5rem; }
+    h1 { margin:0; font-size:2.25rem; }
+    .tabs { display:flex; gap:1rem; flex-wrap:wrap; }
+    .tab { border:none; padding:0.75rem 1.5rem; border-radius:999px; background:rgba(148,163,184,0.12); color:#94a3b8; font-weight:600; cursor:pointer; }
+    .tab.is-active { background:linear-gradient(120deg,#6366f1,#4338ca); color:white; }
+    .panel { display:none; line-height:1.7; }
+    .panel.is-active { display:block; }
+    .todo-input { display:flex; gap:1rem; }
+    input { flex:1; padding:0.75rem 1rem; border-radius:14px; border:1px solid rgba(148,163,184,0.3); background:rgba(15,23,42,0.5); color:inherit; }
+    .btn { border:none; border-radius:14px; padding:0.75rem 1.8rem; background:linear-gradient(120deg,#22c55e,#16a34a); color:white; font-weight:600; cursor:pointer; }
+    ul { list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:0.75rem; }
+    li { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; border-radius:14px; background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.2); }
+    li button { background:none; border:none; color:#f87171; font-weight:600; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <section class="board">
+    <header>
+      <h1>DOM Interactions</h1>
+      <p>Demo tab navigation &amp; todo list sử dụng <code>querySelector</code>, <code>classList</code>, <code>event delegation</code>.</p>
+    </header>
+    <nav class="tabs" role="tablist">
+      <button class="tab is-active" data-target="intro" role="tab">Giới thiệu</button>
+      <button class="tab" data-target="todo" role="tab">Todo</button>
+      <button class="tab" data-target="tips" role="tab">Tips</button>
+    </nav>
+    <article id="intro" class="panel is-active" role="tabpanel">
+      <p>Sử dụng JavaScript để chuyển tab mà không reload trang. Khi nhấn tab, ta thêm/lấy lớp <code>is-active</code>.</p>
+    </article>
+    <article id="todo" class="panel" role="tabpanel">
+      <div class="todo-input">
+        <input id="todoInput" placeholder="Thêm việc cần làm">
+        <button class="btn" id="todoAdd">Thêm</button>
+      </div>
+      <ul id="todoList"></ul>
+    </article>
+    <article id="tips" class="panel" role="tabpanel">
+      <ul>
+        <li>Sử dụng <strong>event.target</strong> để biết phần tử được nhấn.</li>
+        <li>Gom logic UI thành hàm nhỏ để tái sử dụng.</li>
+        <li>Tránh truy cập DOM quá nhiều lần trong vòng lặp.</li>
+      </ul>
+    </article>
+  </section>
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((button) => button.classList.remove('is-active'));
+        panels.forEach((panel) => panel.classList.remove('is-active'));
+        tab.classList.add('is-active');
+        document.getElementById(tab.dataset.target).classList.add('is-active');
+      });
+    });
+
+    const todoInput = document.getElementById('todoInput');
+    const todoList = document.getElementById('todoList');
+
+    document.getElementById('todoAdd').addEventListener('click', () => {
+      const value = todoInput.value.trim();
+      if (!value) return;
+      const item = document.createElement('li');
+      item.innerHTML = `<span>${value}</span><button>Xóa</button>`;
+      todoList.appendChild(item);
+      todoInput.value = '';
+      todoInput.focus();
+    });
+
+    todoList.addEventListener('click', (event) => {
+      if (event.target.tagName !== 'BUTTON') return;
+      event.target.closest('li').remove();
+    });
+  </script>
+</body>
+</html>

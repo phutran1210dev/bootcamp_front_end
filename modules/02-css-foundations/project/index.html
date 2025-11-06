@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Studio Style Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero__content">
+            <p class="hero__eyebrow">Case Study</p>
+            <h1 class="hero__title">Thiết kế hệ thống nhận diện thương hiệu cho startup EdTech</h1>
+            <p class="hero__summary">Bài tập thực tế giúp người học luyện tập phối màu, kiểu chữ và layout hiện đại bằng CSS thuần.</p>
+            <a class="hero__cta" href="#components">Khám phá style guide</a>
+        </div>
+        <img class="hero__illustration" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Người thiết kế đang làm việc trên laptop">
+    </header>
+
+    <main>
+        <section id="foundations" class="card">
+            <h2 class="card__title">Foundation Tokens</h2>
+            <div class="swatch-grid">
+                <article class="swatch">
+                    <span class="swatch__label">Primary</span>
+                    <span class="swatch__color swatch__color--primary"></span>
+                    <span class="swatch__value">#4C6EF5</span>
+                </article>
+                <article class="swatch">
+                    <span class="swatch__label">Secondary</span>
+                    <span class="swatch__color swatch__color--secondary"></span>
+                    <span class="swatch__value">#F97316</span>
+                </article>
+                <article class="swatch">
+                    <span class="swatch__label">Neutral</span>
+                    <span class="swatch__color swatch__color--neutral"></span>
+                    <span class="swatch__value">#1F2937</span>
+                </article>
+                <article class="swatch">
+                    <span class="swatch__label">Accent</span>
+                    <span class="swatch__color swatch__color--accent"></span>
+                    <span class="swatch__value">#16C79A</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="components" class="card">
+            <h2 class="card__title">UI Components</h2>
+            <div class="components">
+                <article class="components__card">
+                    <h3>Cards</h3>
+                    <p>Áp dụng flexbox, đổ bóng và radius mềm mại để tạo điểm nhấn.</p>
+                    <div class="components__preview components__preview--cards">
+                        <div class="mini-card">
+                            <span>01</span>
+                            <h4>Nghiên cứu người dùng</h4>
+                        </div>
+                        <div class="mini-card">
+                            <span>02</span>
+                            <h4>Ý tưởng concept</h4>
+                        </div>
+                        <div class="mini-card">
+                            <span>03</span>
+                            <h4>Prototype nhanh</h4>
+                        </div>
+                    </div>
+                </article>
+                <article class="components__card">
+                    <h3>Buttons</h3>
+                    <p>Thiết kế 3 trạng thái: mặc định, hover, disabled với biến CSS.</p>
+                    <div class="components__preview components__preview--buttons">
+                        <button class="btn">Đăng ký ngay</button>
+                        <button class="btn btn--outline">Tải tài liệu</button>
+                        <button class="btn" disabled>Coming soon</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="layout" class="card card--highlight">
+            <div>
+                <h2 class="card__title">Responsive Layout</h2>
+                <p>Phần này kết hợp grid hai cột trên desktop và layout một cột trên mobile. Người học luyện tập sử dụng clamp() và minmax().</p>
+                <a class="hero__cta" href="#">Xem hướng dẫn chi tiết</a>
+            </div>
+            <ul class="milestones">
+                <li class="milestones__item">
+                    <span class="milestones__step">Buổi 1</span>
+                    <span class="milestones__text">Thiết lập hệ thống biến, reset CSS</span>
+                </li>
+                <li class="milestones__item">
+                    <span class="milestones__step">Buổi 2</span>
+                    <span class="milestones__text">Flexbox và component</span>
+                </li>
+                <li class="milestones__item">
+                    <span class="milestones__step">Buổi 3</span>
+                    <span class="milestones__text">CSS Grid và responsive</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Creative Studio Style Guide – Bài tập thực tế dành cho module CSS Foundations.</p>
+    </footer>
+</body>
+</html>

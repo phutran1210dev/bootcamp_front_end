@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX Project · Course Explorer</title>
+  <style>
+    body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: #020617; color: #e2e8f0; min-height: 100vh; display: grid; place-items: center; padding: 3rem 1rem; }
+    .shell { width: min(960px, 100%); background: rgba(15, 23, 42, 0.85); border-radius: 32px; padding: 3rem; box-shadow: 0 45px 120px -60px rgba(15, 23, 42, 1); display: grid; gap: 2.5rem; }
+    header h1 { margin: 0; font-size: clamp(2.1rem, 4vw, 2.9rem); }
+    header p { color: #cbd5f5; max-width: 540px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 1rem; }
+    input, select { padding: 0.75rem 1rem; border-radius: 16px; border: 1px solid rgba(148, 163, 184, 0.35); background: rgba(15, 23, 42, 0.6); color: inherit; min-width: 200px; }
+    button { border: none; border-radius: 999px; padding: 0.9rem 2.4rem; font-weight: 600; background: linear-gradient(120deg, #38bdf8, #0ea5e9); color: white; cursor: pointer; }
+    .results { display: grid; gap: 1.25rem; }
+    .card { border-radius: 24px; background: rgba(14, 116, 144, 0.18); border: 1px solid rgba(45, 212, 191, 0.2); padding: 1.8rem; display: grid; gap: 0.75rem; }
+    .card h3 { margin: 0; font-size: 1.35rem; }
+    .meta { display: flex; gap: 0.75rem; flex-wrap: wrap; font-size: 0.85rem; color: #bae6fd; }
+    .status { color: #38bdf8; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <section class="shell">
+    <header>
+      <p style="letter-spacing:0.3em;text-transform:uppercase;color:#94a3b8;font-size:0.75rem;margin:0 0 0.5rem;">Thực hành AJAX</p>
+      <h1>Course Explorer</h1>
+      <p>Tìm kiếm khóa học miễn phí thông qua API giả lập <code>dummyjson.com</code>. Sử dụng <code>fetch</code>, <code>AbortController</code> và xử lý loading.</p>
+    </header>
+
+    <div class="filters">
+      <input id="searchInput" placeholder="Từ khóa (ví dụ: design, javascript)">
+      <select id="limit">
+        <option value="6">6 khóa học</option>
+        <option value="9">9 khóa học</option>
+        <option value="12">12 khóa học</option>
+      </select>
+      <button id="searchBtn">Tìm kiếm</button>
+      <span id="status" class="status"></span>
+    </div>
+
+    <div class="results" id="results"></div>
+  </section>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const limitSelect = document.getElementById('limit');
+    const searchBtn = document.getElementById('searchBtn');
+    const resultsEl = document.getElementById('results');
+    const statusEl = document.getElementById('status');
+
+    let controller = null;
+
+    async function searchCourses() {
+      const query = searchInput.value.trim() || 'frontend';
+      const limit = Number(limitSelect.value);
+
+      if (controller) {
+        controller.abort();
+      }
+      controller = new AbortController();
+
+      statusEl.textContent = 'Đang tải dữ liệu...';
+      resultsEl.innerHTML = '';
+
+      try {
+        const endpoint = `https://dummyjson.com/products/search?q=${encodeURIComponent(query)}&limit=${limit}`;
+        const response = await fetch(endpoint, { signal: controller.signal });
+        if (!response.ok) throw new Error('Không lấy được dữ liệu');
+        const data = await response.json();
+        renderResults(data.products);
+        statusEl.textContent = `Tìm thấy ${data.total} kết quả, hiển thị ${data.products.length}.`;
+      } catch (error) {
+        if (error.name === 'AbortError') {
+          statusEl.textContent = 'Đã hủy yêu cầu cũ.';
+        } else {
+          statusEl.textContent = 'Lỗi: ' + error.message;
+        }
+      }
+    }
+
+    function renderResults(courses) {
+      if (!courses.length) {
+        resultsEl.innerHTML = '<p>Không có khóa học nào.</p>';
+        return;
+      }
+      resultsEl.innerHTML = courses.map((course) => `
+        <article class="card">
+          <h3>${course.title}</h3>
+          <p>${course.description}</p>
+          <div class="meta">
+            <span>Danh mục: ${course.category}</span>
+            <span>Giá: $${course.price}</span>
+            <span>Đánh giá: ${course.rating}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    searchBtn.addEventListener('click', searchCourses);
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        searchCourses();
+      }
+    });
+
+    searchCourses();
+  </script>
+</body>
+</html>

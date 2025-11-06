@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Planner · JS Basics Project</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.25), transparent 45%), #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 3rem 1rem;
+    }
+    .app {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(16px);
+      border-radius: 28px;
+      padding: 2.75rem;
+      width: min(720px, 100%);
+      box-shadow: 0 32px 80px -40px rgba(15, 23, 42, 0.9);
+      display: grid;
+      gap: 2rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: rgba(148, 163, 184, 0.08);
+      border-radius: 20px;
+      padding: 1.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      display: grid;
+      gap: 0.75rem;
+    }
+    label {
+      display: block;
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      margin-bottom: 0.4rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.6);
+      color: inherit;
+      font: inherit;
+    }
+    button {
+      border-radius: 999px;
+      border: none;
+      padding: 0.85rem 2.4rem;
+      font-weight: 600;
+      background: linear-gradient(120deg, #6366f1, #4338ca);
+      color: white;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 24px 45px -32px rgba(99, 102, 241, 0.45);
+    }
+    button:hover {
+      transform: translateY(-3px);
+    }
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+    .timeline__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      border-radius: 18px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    .timeline__item span {
+      font-weight: 600;
+    }
+    .empty {
+      color: #94a3b8;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <section class="app">
+    <header>
+      <p class="eyebrow" style="letter-spacing:0.3em;text-transform:uppercase;color:#94a3b8;font-size:0.75rem;">Project thực tế</p>
+      <h1>Kế hoạch học frontend của bạn</h1>
+      <p style="color:#cbd5f5;max-width:520px;">Sử dụng JavaScript cơ bản để thêm buổi học, tính tổng giờ và gợi ý lộ trình phù hợp theo mục tiêu.</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2 style="margin:0;font-size:1.25rem;">Thêm buổi học</h2>
+        <label for="topic">Chủ đề</label>
+        <input id="topic" placeholder="HTML Semantics">
+        <label for="hours">Thời lượng (giờ)</label>
+        <input id="hours" type="number" min="1" value="2">
+        <label for="level">Độ ưu tiên</label>
+        <select id="level">
+          <option value="core">Core</option>
+          <option value="practice">Practice</option>
+          <option value="stretch">Stretch</option>
+        </select>
+        <button id="addSession">Thêm vào timeline</button>
+      </div>
+      <div class="card">
+        <h2 style="margin:0;font-size:1.25rem;">Mục tiêu</h2>
+        <p>Chọn mục tiêu để gợi ý lộ trình.</p>
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button type="button" class="goal" data-sessions='["HTML","CSS","JavaScript"]'>Web cơ bản</button>
+          <button type="button" class="goal" data-sessions='["Responsive","Bootstrap","Sass"]'>UI nâng cao</button>
+          <button type="button" class="goal" data-sessions='["ES6","Fetch API","Async"]'>JS nâng cao</button>
+        </div>
+        <div id="goalSuggestion" style="margin-top:1rem;color:#cbd5f5;min-height:48px;"></div>
+      </div>
+    </div>
+
+    <section>
+      <header style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <h2 style="margin:0;font-size:1.4rem;">Timeline học tập</h2>
+        <div style="display:flex;gap:1rem;align-items:center;">
+          <span id="totalHours" style="color:#cbd5f5;">0 giờ</span>
+          <button id="clearTimeline" type="button" style="background:rgba(148,163,184,0.12);border:1px solid rgba(148,163,184,0.35);color:#cbd5f5;box-shadow:none;">Xóa hết</button>
+        </div>
+      </header>
+      <div class="timeline" id="timeline"></div>
+    </section>
+  </section>
+
+  <script>
+    const timeline = document.getElementById('timeline');
+    const totalHoursEl = document.getElementById('totalHours');
+    const sessions = [];
+
+    function renderTimeline() {
+      timeline.innerHTML = '';
+      if (sessions.length === 0) {
+        timeline.innerHTML = '<p class="empty">Chưa có buổi học nào, hãy thêm từ form bên trái.</p>';
+      } else {
+        sessions.forEach((session, index) => {
+          const item = document.createElement('div');
+          item.className = 'timeline__item';
+          item.innerHTML = `
+            <div>
+              <span>${session.topic}</span>
+              <p style="margin:0.25rem 0 0;color:#cbd5f5;font-size:0.9rem;">${session.hours} giờ · ${session.level}</p>
+            </div>
+            <button data-index="${index}" class="remove" style="background:none;border:none;color:#f87171;cursor:pointer;font-weight:600;">Xóa</button>
+          `;
+          timeline.appendChild(item);
+        });
+      }
+
+      const total = sessions.reduce((sum, item) => sum + item.hours, 0);
+      totalHoursEl.textContent = `${total} giờ`;
+    }
+
+    document.getElementById('addSession').addEventListener('click', () => {
+      const topic = document.getElementById('topic').value.trim();
+      const hours = Number(document.getElementById('hours').value);
+      const level = document.getElementById('level').value;
+
+      if (!topic || hours <= 0) {
+        alert('Hãy nhập chủ đề và thời lượng hợp lệ.');
+        return;
+      }
+
+      sessions.push({ topic, hours, level });
+      document.getElementById('topic').value = '';
+      renderTimeline();
+    });
+
+    timeline.addEventListener('click', (event) => {
+      const button = event.target.closest('button.remove');
+      if (!button) return;
+      const index = Number(button.dataset.index);
+      sessions.splice(index, 1);
+      renderTimeline();
+    });
+
+    document.querySelectorAll('.goal').forEach((button) => {
+      button.addEventListener('click', () => {
+        const suggestion = JSON.parse(button.dataset.sessions);
+        const html = suggestion.map((item, idx) => `${idx + 1}. ${item}`).join('<br>');
+        document.getElementById('goalSuggestion').innerHTML = html;
+      });
+    });
+
+    document.getElementById('clearTimeline').addEventListener('click', () => {
+      sessions.splice(0, sessions.length);
+      renderTimeline();
+    });
+
+    renderTimeline();
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailwind Project · Remote Learning Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#6366f1'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <div class="min-h-screen lg:grid lg:grid-cols-[300px_1fr]">
+    <aside class="border-b lg:border-b-0 lg:border-r border-white/10 p-6 lg:p-8 bg-slate-950/80 backdrop-blur">
+      <h1 class="text-xl font-semibold tracking-[0.2em] uppercase text-slate-300">Remote Hub</h1>
+      <nav class="mt-8 space-y-2">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-2xl bg-brand/10 text-brand" href="#overview">
+          <span class="w-2 h-2 rounded-full bg-brand"></span>
+          Tổng quan
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/5 transition" href="#sessions">Buổi học</a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/5 transition" href="#mentors">Mentor</a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-white/5 transition" href="#resources">Tài nguyên</a>
+      </nav>
+      <div class="mt-10 space-y-4">
+        <button class="w-full px-4 py-3 rounded-2xl bg-brand text-white font-semibold shadow-lg shadow-brand/40">Tạo lớp học</button>
+        <button class="w-full px-4 py-3 rounded-2xl border border-white/10 hover:bg-white/10 transition">Xuất báo cáo</button>
+      </div>
+    </aside>
+
+    <main class="p-6 lg:p-10 space-y-10" id="overview">
+      <header class="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 via-white/0 to-white/5 p-8">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="uppercase text-xs tracking-[0.3em] text-slate-400">Module thực tế</p>
+            <h2 class="mt-2 text-3xl font-semibold">Xây dựng dashboard quản lý lớp học online bằng Tailwind</h2>
+            <p class="mt-3 text-slate-300 max-w-2xl">Ứng dụng utility-first để tạo layout responsive, card thống kê và bảng lịch học.</p>
+          </div>
+          <div class="flex gap-3">
+            <button class="px-5 py-3 rounded-2xl bg-brand text-white font-medium">Tạo buổi học</button>
+            <button class="px-5 py-3 rounded-2xl border border-white/20 text-slate-200">Xem tài liệu</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid gap-6 md:grid-cols-2" id="sessions">
+        <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-semibold">Lịch học tuần này</h3>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-400">4 buổi</span>
+          </div>
+          <ul class="mt-5 space-y-3 text-sm text-slate-300">
+            <li class="flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3">
+              <span>Thứ 2 · HTML Semantic</span>
+              <span class="text-brand">19:30</span>
+            </li>
+            <li class="flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3">
+              <span>Thứ 4 · CSS Layout</span>
+              <span class="text-brand">19:30</span>
+            </li>
+            <li class="flex items-center justify-between rounded-2xl border border-white/10 px-4 py-3">
+              <span>Thứ 6 · JavaScript DOM</span>
+              <span class="text-brand">19:30</span>
+            </li>
+          </ul>
+        </article>
+        <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <h3 class="text-xl font-semibold">Checklist lớp học</h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-3">
+              <input type="checkbox" class="w-4 h-4 rounded border-white/20 bg-transparent text-brand" checked>
+              <span>Chuẩn bị tài liệu cho buổi Bootstrap</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <input type="checkbox" class="w-4 h-4 rounded border-white/20 bg-transparent text-brand">
+              <span>Upload record tuần trước</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <input type="checkbox" class="w-4 h-4 rounded border-white/20 bg-transparent text-brand" checked>
+              <span>Gửi email nhắc lịch học</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="mentors" class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h3 class="text-xl font-semibold">Mentor</h3>
+            <p class="text-slate-300 text-sm">Danh sách mentor hỗ trợ lớp học.</p>
+          </div>
+          <button class="px-4 py-2 rounded-xl border border-white/20 text-sm">Thêm mentor</button>
+        </div>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 space-y-3">
+            <img class="w-14 h-14 rounded-2xl object-cover" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80" alt="mentor">
+            <div>
+              <h4 class="font-semibold">Minh Trí</h4>
+              <p class="text-xs text-slate-400">Frontend Lead · Axon</p>
+            </div>
+            <p class="text-xs text-slate-400">Chuyên sâu: React, Tailwind, tối ưu hiệu suất.</p>
+          </article>
+          <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 space-y-3">
+            <img class="w-14 h-14 rounded-2xl object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="mentor">
+            <div>
+              <h4 class="font-semibold">Lan Anh</h4>
+              <p class="text-xs text-slate-400">UI Engineer · Base.vn</p>
+            </div>
+            <p class="text-xs text-slate-400">Chuyên sâu: Design system, accessibility.</p>
+          </article>
+          <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 space-y-3">
+            <img class="w-14 h-14 rounded-2xl object-cover" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=200&q=80" alt="mentor">
+            <div>
+              <h4 class="font-semibold">Quang Huy</h4>
+              <p class="text-xs text-slate-400">Engineering Manager · Be Group</p>
+            </div>
+            <p class="text-xs text-slate-400">Chuyên sâu: Kiến trúc front-end, best practice.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="resources" class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="text-xl font-semibold">Tài nguyên</h3>
+            <p class="text-sm text-slate-300">Template slide, mã nguồn và checklist.</p>
+          </div>
+          <button class="px-4 py-2 rounded-xl bg-brand text-white text-sm">Upload mới</button>
+        </div>
+        <div class="mt-6 grid gap-3 md:grid-cols-3 text-sm text-slate-300">
+          <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+            <p class="font-medium">Starter kit HTML</p>
+            <span class="text-xs text-slate-400">24 file · cập nhật 1 ngày trước</span>
+          </article>
+          <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+            <p class="font-medium">Slide CSS layout</p>
+            <span class="text-xs text-slate-400">12 slide · cập nhật 2 ngày trước</span>
+          </article>
+          <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+            <p class="font-medium">Checklist chuẩn bị lớp</p>
+            <span class="text-xs text-slate-400">PDF · cập nhật 5 giờ trước</span>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

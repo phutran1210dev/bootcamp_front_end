@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript OOP - Lập trình hướng đối tượng</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    <h1>JavaScript OOP</h1>
+                </div>
+                <div class="header-subtitle">
+                    <p>Lập trình hướng đối tượng trong JavaScript</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#intro" class="nav-link active">Giới thiệu</a></li>
+                <li><a href="#classes" class="nav-link">Classes</a></li>
+                <li><a href="#inheritance" class="nav-link">Inheritance</a></li>
+                <li><a href="#encapsulation" class="nav-link">Encapsulation</a></li>
+                <li><a href="#polymorphism" class="nav-link">Polymorphism</a></li>
+                <li><a href="#exercises" class="nav-link">Bài tập</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Introduction Section -->
+            <section id="intro" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-lightbulb"></i> Giới thiệu OOP</h2>
+                    <p>Tìm hiểu về các khái niệm cơ bản của lập trình hướng đối tượng</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="concept-card">
+                        <div class="concept-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3>Class (Lớp)</h3>
+                        <p>Template để tạo ra các object với cùng cấu trúc và hành vi</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3>Object (Đối tượng)</h3>
+                        <p>Instance của class, chứa dữ liệu (properties) và hành vi (methods)</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3>Inheritance (Kế thừa)</h3>
+                        <p>Class con có thể kế thừa properties và methods từ class cha</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Encapsulation (Đóng gói)</h3>
+                        <p>Che giấu chi tiết triển khai, chỉ expose interface cần thiết</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <h3>Polymorphism (Đa hình)</h3>
+                        <p>Cùng một method có thể hoạt động khác nhau ở các class khác nhau</p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Abstraction (Trừu tượng)</h3>
+                        <p>Ẩn đi những chi tiết phức tạp, chỉ hiển thị những gì cần thiết</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Classes Section -->
+            <section id="classes" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-box"></i> Classes trong JavaScript</h2>
+                    <p>Học cách tạo và sử dụng classes trong ES6+</p>
+                </div>
+
+                <div class="example-container">
+                    <h3>1. Cú pháp cơ bản</h3>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="language">JavaScript</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-javascript">// Định nghĩa class
+class Person {
+    // Constructor - phương thức khởi tạo
+    constructor(name, age, email) {
+        this.name = name;      // Property (thuộc tính)
+        this.age = age;
+        this.email = email;
+    }
+
+    // Method (phương thức)
+    introduce() {
+        return `Xin chào, tôi là ${this.name}, ${this.age} tuổi`;
+    }
+
+    // Getter
+    get info() {
+        return `${this.name} - ${this.email}`;
+    }
+
+    // Setter
+    set updateAge(newAge) {
+        if (newAge > 0 && newAge < 150) {
+            this.age = newAge;
+        }
+    }
+
+    // Static method
+    static createAdult(name, email) {
+        return new Person(name, 18, email);
+    }
+}
+
+// Sử dụng class
+const person1 = new Person("Nguyễn Văn A", 25, "vana@email.com");
+console.log(person1.introduce()); // "Xin chào, tôi là Nguyễn Văn A, 25 tuổi"
+console.log(person1.info); // "Nguyễn Văn A - vana@email.com"
+
+person1.updateAge = 26;
+console.log(person1.age); // 26
+
+const adult = Person.createAdult("Trần Thị B", "thib@email.com");
+console.log(adult.age); // 18</code></pre>
+                    </div>
+
+                    <div class="demo-area">
+                        <h4>Demo trực tiếp:</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="personName" placeholder="Tên" value="Nguyễn Văn A">
+                            <input type="number" id="personAge" placeholder="Tuổi" value="25">
+                            <input type="email" id="personEmail" placeholder="Email" value="vana@email.com">
+                            <button onclick="createPersonDemo()" class="btn btn-primary">Tạo Person</button>
+                        </div>
+                        <div id="personOutput" class="demo-output"></div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <h3>2. Private Fields và Methods (ES2022)</h3>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="language">JavaScript</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-javascript">class BankAccount {
+    // Private fields (bắt đầu với #)
+    #balance = 0;
+    #accountNumber;
+    #pin;
+
+    constructor(accountNumber, initialBalance = 0, pin) {
+        this.#accountNumber = accountNumber;
+        this.#balance = initialBalance;
+        this.#pin = pin;
+    }
+
+    // Public method
+    deposit(amount) {
+        if (amount > 0) {
+            this.#balance += amount;
+            return `Đã nạp ${amount}. Số dư: ${this.#balance}`;
+        }
+        return "Số tiền không hợp lệ";
+    }
+
+    withdraw(amount, pin) {
+        if (!this.#validatePin(pin)) {
+            return "Mã PIN không đúng";
+        }
+        
+        if (amount > 0 && amount <= this.#balance) {
+            this.#balance -= amount;
+            return `Đã rút ${amount}. Số dư: ${this.#balance}`;
+        }
+        return "Số tiền không hợp lệ hoặc không đủ số dư";
+    }
+
+    // Private method
+    #validatePin(pin) {
+        return this.#pin === pin;
+    }
+
+    // Getter cho balance (chỉ đọc)
+    get balance() {
+        return this.#balance;
+    }
+
+    get accountInfo() {
+        return `Tài khoản: ${this.#accountNumber}`;
+    }
+}
+
+// Sử dụng
+const account = new BankAccount("123456789", 1000, "1234");
+console.log(account.deposit(500)); // "Đã nạp 500. Số dư: 1500"
+console.log(account.withdraw(200, "1234")); // "Đã rút 200. Số dư: 1300"
+console.log(account.balance); // 1300
+
+// Không thể truy cập private fields
+// console.log(account.#balance); // SyntaxError!</code></pre>
+                    </div>
+
+                    <div class="demo-area">
+                        <h4>Demo BankAccount:</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="accountNumber" placeholder="Số tài khoản" value="123456789">
+                            <input type="number" id="initialBalance" placeholder="Số dư ban đầu" value="1000">
+                            <input type="password" id="pin" placeholder="Mã PIN" value="1234">
+                            <button onclick="createAccountDemo()" class="btn btn-primary">Tạo tài khoản</button>
+                        </div>
+                        <div id="accountControls" class="demo-controls" style="display: none;">
+                            <input type="number" id="amount" placeholder="Số tiền">
+                            <input type="password" id="pinInput" placeholder="Mã PIN">
+                            <button onclick="depositDemo()" class="btn btn-success">Nạp tiền</button>
+                            <button onclick="withdrawDemo()" class="btn btn-warning">Rút tiền</button>
+                            <button onclick="checkBalanceDemo()" class="btn btn-info">Kiểm tra số dư</button>
+                        </div>
+                        <div id="accountOutput" class="demo-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inheritance Section -->
+            <section id="inheritance" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-sitemap"></i> Inheritance (Kế thừa)</h2>
+                    <p>Tạo class con kế thừa từ class cha</p>
+                </div>
+
+                <div class="example-container">
+                    <h3>1. Kế thừa cơ bản với extends</h3>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="language">JavaScript</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-javascript">// Class cha (Parent/Base class)
+class Animal {
+    constructor(name, species) {
+        this.name = name;
+        this.species = species;
+        this.energy = 100;
+    }
+
+    eat(food) {
+        this.energy += 10;
+        return `${this.name} đã ăn ${food}. Năng lượng: ${this.energy}`;
+    }
+
+    sleep() {
+        this.energy += 20;
+        return `${this.name} đã ngủ. Năng lượng: ${this.energy}`;
+    }
+
+    makeSound() {
+        return `${this.name} phát ra âm thanh`;
+    }
+
+    getInfo() {
+        return `Tên: ${this.name}, Loài: ${this.species}, Năng lượng: ${this.energy}`;
+    }
+}
+
+// Class con (Child/Derived class)
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name, "Chó"); // Gọi constructor của class cha
+        this.breed = breed;
+        this.loyalty = 100;
+    }
+
+    // Override method của class cha
+    makeSound() {
+        return `${this.name} sủa: Gâu gâu!`;
+    }
+
+    // Method riêng của class con
+    wagTail() {
+        this.loyalty += 5;
+        return `${this.name} vẫy đuôi vui vẻ! Lòng trung thành: ${this.loyalty}`;
+    }
+
+    fetch(item) {
+        this.energy -= 10;
+        this.loyalty += 10;
+        return `${this.name} đã đi lấy ${item}! Năng lượng: ${this.energy}, Lòng trung thành: ${this.loyalty}`;
+    }
+
+    // Override getInfo để thêm thông tin breed
+    getInfo() {
+        return super.getInfo() + `, Giống: ${this.breed}, Lòng trung thành: ${this.loyalty}`;
+    }
+}
+
+class Cat extends Animal {
+    constructor(name, color) {
+        super(name, "Mèo");
+        this.color = color;
+        this.independence = 80;
+    }
+
+    makeSound() {
+        return `${this.name} kêu: Meo meo!`;
+    }
+
+    climb() {
+        this.energy -= 5;
+        return `${this.name} đã trèo lên cao! Năng lượng: ${this.energy}`;
+    }
+
+    hunt() {
+        this.energy -= 15;
+        this.independence += 5;
+        return `${this.name} đã đi săn! Năng lượng: ${this.energy}, Độc lập: ${this.independence}`;
+    }
+
+    getInfo() {
+        return super.getInfo() + `, Màu: ${this.color}, Độc lập: ${this.independence}`;
+    }
+}
+
+// Sử dụng
+const myDog = new Dog("Buddy", "Golden Retriever");
+const myCat = new Cat("Whiskers", "Xám");
+
+console.log(myDog.makeSound()); // "Buddy sủa: Gâu gâu!"
+console.log(myCat.makeSound()); // "Whiskers kêu: Meo meo!"
+
+console.log(myDog.fetch("bóng")); // "Buddy đã đi lấy bóng! Năng lượng: 90, Lòng trung thành: 110"
+console.log(myCat.hunt()); // "Whiskers đã đi săn! Năng lượng: 85, Độc lập: 85"</code></pre>
+                    </div>
+
+                    <div class="demo-area">
+                        <h4>Demo Animal Inheritance:</h4>
+                        <div class="demo-controls">
+                            <select id="animalType">
+                                <option value="dog">Chó</option>
+                                <option value="cat">Mèo</option>
+                            </select>
+                            <input type="text" id="animalName" placeholder="Tên" value="Buddy">
+                            <input type="text" id="animalBreed" placeholder="Giống/Màu" value="Golden Retriever">
+                            <button onclick="createAnimalDemo()" class="btn btn-primary">Tạo Animal</button>
+                        </div>
+                        <div id="animalControls" class="demo-controls" style="display: none;">
+                            <button onclick="animalEatDemo()" class="btn btn-success">Ăn</button>
+                            <button onclick="animalSleepDemo()" class="btn btn-info">Ngủ</button>
+                            <button onclick="animalSoundDemo()" class="btn btn-warning">Phát âm thanh</button>
+                            <button onclick="animalSpecialDemo()" class="btn btn-primary">Hành động đặc biệt</button>
+                            <button onclick="animalInfoDemo()" class="btn btn-secondary">Xem thông tin</button>
+                        </div>
+                        <div id="animalOutput" class="demo-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Encapsulation Section -->
+            <section id="encapsulation" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-lock"></i> Encapsulation (Đóng gói)</h2>
+                    <p>Bảo vệ dữ liệu và kiểm soát truy cập</p>
+                </div>
+
+                <div class="example-container">
+                    <h3>1. Private Properties và Methods</h3>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="language">JavaScript</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-javascript">class Car {
+    // Private fields
+    #engine;
+    #fuel;
+    #maxFuel;
+    #isRunning = false;
+
+    constructor(brand, model, maxFuel = 50) {
+        this.brand = brand;
+        this.model = model;
+        this.#maxFuel = maxFuel;
+        this.#fuel = 0;
+        this.#engine = {
+            temperature: 20,
+            rpm: 0
+        };
+    }
+
+    // Public methods
+    start() {
+        if (this.#isRunning) {
+            return "Xe đã được khởi động rồi!";
+        }
+        
+        if (this.#fuel <= 0) {
+            return "Không thể khởi động - hết xăng!";
+        }
+
+        this.#isRunning = true;
+        this.#engine.rpm = 800;
+        this.#warmUpEngine();
+        return `${this.brand} ${this.model} đã khởi động thành công!`;
+    }
+
+    stop() {
+        if (!this.#isRunning) {
+            return "Xe đã tắt rồi!";
+        }
+
+        this.#isRunning = false;
+        this.#engine.rpm = 0;
+        this.#coolDownEngine();
+        return `${this.brand} ${this.model} đã tắt máy.`;
+    }
+
+    addFuel(amount) {
+        if (amount <= 0) {
+            return "Số lượng xăng phải lớn hơn 0!";
+        }
+
+        const canAdd = Math.min(amount, this.#maxFuel - this.#fuel);
+        this.#fuel += canAdd;
+        
+        if (canAdd < amount) {
+            return `Đã thêm ${canAdd}L xăng. Bình xăng đã đầy! (${this.#fuel}/${this.#maxFuel}L)`;
+        }
+        
+        return `Đã thêm ${canAdd}L xăng. Tổng: ${this.#fuel}L`;
+    }
+
+    drive(distance) {
+        if (!this.#isRunning) {
+            return "Hãy khởi động xe trước!";
+        }
+
+        const fuelNeeded = distance * 0.1; // 0.1L/km
+        
+        if (fuelNeeded > this.#fuel) {
+            return `Không đủ xăng! Cần ${fuelNeeded}L nhưng chỉ có ${this.#fuel}L`;
+        }
+
+        this.#fuel -= fuelNeeded;
+        this.#updateEngineLoad(distance);
+        
+        return `Đã lái ${distance}km. Xăng còn lại: ${this.#fuel.toFixed(1)}L`;
+    }
+
+    // Private methods
+    #warmUpEngine() {
+        this.#engine.temperature = 90;
+    }
+
+    #coolDownEngine() {
+        this.#engine.temperature = 20;
+    }
+
+    #updateEngineLoad(distance) {
+        const load = Math.min(3000, 800 + (distance * 10));
+        this.#engine.rpm = load;
+        this.#engine.temperature = Math.min(110, 90 + (distance * 0.5));
+    }
+
+    // Getters for controlled access
+    get fuelLevel() {
+        return `${this.#fuel.toFixed(1)}/${this.#maxFuel}L`;
+    }
+
+    get engineStatus() {
+        return {
+            running: this.#isRunning,
+            temperature: this.#engine.temperature,
+            rpm: this.#engine.rpm
+        };
+    }
+
+    get carInfo() {
+        return `${this.brand} ${this.model} - ${this.#isRunning ? 'Đang chạy' : 'Đã tắt máy'}`;
+    }
+}
+
+// Sử dụng
+const myCar = new Car("Toyota", "Camry", 60);
+console.log(myCar.addFuel(40)); // "Đã thêm 40L xăng. Tổng: 40L"
+console.log(myCar.start()); // "Toyota Camry đã khởi động thành công!"
+console.log(myCar.drive(100)); // "Đã lái 100km. Xăng còn lại: 30.0L"
+console.log(myCar.fuelLevel); // "30.0/60L"
+
+// Không thể truy cập private fields
+// console.log(myCar.#fuel); // SyntaxError!</code></pre>
+                    </div>
+
+                    <div class="demo-area">
+                        <h4>Demo Car Encapsulation:</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="carBrand" placeholder="Hãng xe" value="Toyota">
+                            <input type="text" id="carModel" placeholder="Model" value="Camry">
+                            <input type="number" id="maxFuel" placeholder="Dung tích bình xăng" value="60">
+                            <button onclick="createCarDemo()" class="btn btn-primary">Tạo xe</button>
+                        </div>
+                        <div id="carControls" class="demo-controls" style="display: none;">
+                            <input type="number" id="fuelAmount" placeholder="Số lít xăng" value="40">
+                            <button onclick="addFuelDemo()" class="btn btn-success">Đổ xăng</button>
+                            <button onclick="startCarDemo()" class="btn btn-warning">Khởi động</button>
+                            <button onclick="stopCarDemo()" class="btn btn-danger">Tắt máy</button>
+                            <br>
+                            <input type="number" id="driveDistance" placeholder="Khoảng cách (km)" value="50">
+                            <button onclick="driveCarDemo()" class="btn btn-primary">Lái xe</button>
+                            <button onclick="carStatusDemo()" class="btn btn-info">Kiểm tra trạng thái</button>
+                        </div>
+                        <div id="carOutput" class="demo-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Polymorphism Section -->
+            <section id="polymorphism" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shapes"></i> Polymorphism (Đa hình)</h2>
+                    <p>Cùng một interface, nhiều cách triển khai khác nhau</p>
+                </div>
+
+                <div class="example-container">
+                    <h3>1. Method Overriding và Polymorphism</h3>
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span class="language">JavaScript</span>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <pre><code class="language-javascript">// Base class
+class Shape {
+    constructor(name) {
+        this.name = name;
+    }
+
+    // Method sẽ được override bởi các class con
+    calculateArea() {
+        throw new Error("calculateArea() phải được implement bởi class con");
+    }
+
+    calculatePerimeter() {
+        throw new Error("calculatePerimeter() phải được implement bởi class con");
+    }
+
+    // Common method cho tất cả shapes
+    getInfo() {
+        return `${this.name} - Diện tích: ${this.calculateArea()}, Chu vi: ${this.calculatePerimeter()}`;
+    }
+
+    // Static method để tạo shape từ type
+    static createShape(type, ...params) {
+        switch(type.toLowerCase()) {
+            case 'rectangle':
+                return new Rectangle(params[0], params[1]);
+            case 'circle':
+                return new Circle(params[0]);
+            case 'triangle':
+                return new Triangle(params[0], params[1], params[2]);
+            default:
+                throw new Error(`Unknown shape type: ${type}`);
+        }
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super("Hình chữ nhật");
+        this.width = width;
+        this.height = height;
+    }
+
+    calculateArea() {
+        return this.width * this.height;
+    }
+
+    calculatePerimeter() {
+        return 2 * (this.width + this.height);
+    }
+
+    // Method riêng của Rectangle
+    isSquare() {
+        return this.width === this.height;
+    }
+}
+
+class Circle extends Shape {
+    constructor(radius) {
+        super("Hình tròn");
+        this.radius = radius;
+    }
+
+    calculateArea() {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    calculatePerimeter() {
+        return 2 * Math.PI * this.radius;
+    }
+
+    // Method riêng của Circle
+    getDiameter() {
+        return 2 * this.radius;
+    }
+}
+
+class Triangle extends Shape {
+    constructor(side1, side2, side3) {
+        super("Tam giác");
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+
+    calculateArea() {
+        // Sử dụng công thức Heron
+        const s = this.calculatePerimeter() / 2;
+        return Math.sqrt(s * (s - this.side1) * (s - this.side2) * (s - this.side3));
+    }
+
+    calculatePerimeter() {
+        return this.side1 + this.side2 + this.side3;
+    }
+
+    // Method riêng của Triangle
+    isValidTriangle() {
+        return (this.side1 + this.side2 > this.side3) &&
+               (this.side1 + this.side3 > this.side2) &&
+               (this.side2 + this.side3 > this.side1);
+    }
+}
+
+// Demonstration of Polymorphism
+class ShapeCalculator {
+    constructor() {
+        this.shapes = [];
+    }
+
+    addShape(shape) {
+        if (shape instanceof Shape) {
+            this.shapes.push(shape);
+            return `Đã thêm ${shape.name}`;
+        }
+        throw new Error("Object phải là instance của Shape");
+    }
+
+    calculateTotalArea() {
+        // Polymorphism: gọi calculateArea() trên các object khác nhau
+        // nhưng mỗi object sẽ thực hiện theo cách riêng của nó
+        return this.shapes.reduce((total, shape) => total + shape.calculateArea(), 0);
+    }
+
+    calculateTotalPerimeter() {
+        return this.shapes.reduce((total, shape) => total + shape.calculatePerimeter(), 0);
+    }
+
+    getShapesSummary() {
+        return this.shapes.map(shape => shape.getInfo()).join('\n');
+    }
+
+    // Method sử dụng polymorphism
+    processShapes() {
+        const results = [];
+        
+        this.shapes.forEach(shape => {
+            // Tất cả shapes đều có calculateArea() và calculatePerimeter()
+            // nhưng implementation khác nhau
+            const area = shape.calculateArea();
+            const perimeter = shape.calculatePerimeter();
+            
+            results.push({
+                name: shape.name,
+                area: area.toFixed(2),
+                perimeter: perimeter.toFixed(2)
+            });
+        });
+        
+        return results;
+    }
+}
+
+// Sử dụng Polymorphism
+const calculator = new ShapeCalculator();
+
+// Tạo các shapes khác nhau
+const rectangle = new Rectangle(5, 3);
+const circle = new Circle(4);
+const triangle = new Triangle(3, 4, 5);
+
+// Thêm vào calculator
+calculator.addShape(rectangle);
+calculator.addShape(circle);
+calculator.addShape(triangle);
+
+// Polymorphism in action
+console.log("Tổng diện tích:", calculator.calculateTotalArea().toFixed(2));
+console.log("Tổng chu vi:", calculator.calculateTotalPerimeter().toFixed(2));
+console.log("\nThông tin các hình:");
+console.log(calculator.getShapesSummary());</code></pre>
+                    </div>
+
+                    <div class="demo-area">
+                        <h4>Demo Shape Polymorphism:</h4>
+                        <div class="demo-controls">
+                            <select id="shapeType">
+                                <option value="rectangle">Hình chữ nhật</option>
+                                <option value="circle">Hình tròn</option>
+                                <option value="triangle">Tam giác</option>
+                            </select>
+                            <div id="shapeParams">
+                                <input type="number" id="param1" placeholder="Chiều rộng" value="5">
+                                <input type="number" id="param2" placeholder="Chiều cao" value="3">
+                                <input type="number" id="param3" placeholder="" style="display: none;">
+                            </div>
+                            <button onclick="addShapeDemo()" class="btn btn-primary">Thêm hình</button>
+                            <button onclick="calculateTotalDemo()" class="btn btn-success">Tính tổng</button>
+                            <button onclick="clearShapesDemo()" class="btn btn-danger">Xóa tất cả</button>
+                        </div>
+                        <div id="shapesOutput" class="demo-output"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exercises Section -->
+            <section id="exercises" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-dumbbell"></i> Bài tập thực hành</h2>
+                    <p>Áp dụng kiến thức OOP vào các bài tập thực tế</p>
+                </div>
+
+                <div class="exercise-grid">
+                    <div class="exercise-card">
+                        <div class="exercise-header">
+                            <h3>Bài 1: Library Management</h3>
+                            <span class="difficulty easy">Dễ</span>
+                        </div>
+                        <div class="exercise-content">
+                            <p>Tạo hệ thống quản lý thư viện với Book, Author, và Library classes</p>
+                            <ul>
+                                <li>Book: title, author, isbn, available</li>
+                                <li>Author: name, birthYear, books[]</li>
+                                <li>Library: books[], borrowBook(), returnBook()</li>
+                            </ul>
+                            <button onclick="loadExercise('library')" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Bắt đầu
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-header">
+                            <h3>Bài 2: E-commerce System</h3>
+                            <span class="difficulty medium">Trung bình</span>
+                        </div>
+                        <div class="exercise-content">
+                            <p>Xây dựng hệ thống e-commerce với Product, Cart, Customer</p>
+                            <ul>
+                                <li>Product: name, price, category, stock</li>
+                                <li>Customer: name, email, cart</li>
+                                <li>Cart: addProduct(), removeProduct(), checkout()</li>
+                            </ul>
+                            <button onclick="loadExercise('ecommerce')" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Bắt đầu
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="exercise-card">
+                        <div class="exercise-header">
+                            <h3>Bài 3: Game Character System</h3>
+                            <span class="difficulty hard">Khó</span>
+                        </div>
+                        <div class="exercise-content">
+                            <p>Tạo hệ thống nhân vật game với inheritance và polymorphism</p>
+                            <ul>
+                                <li>Character: health, mana, level, attack()</li>
+                                <li>Warrior, Mage, Archer extends Character</li>
+                                <li>Skill system với các abilities khác nhau</li>
+                            </ul>
+                            <button onclick="loadExercise('game')" class="btn btn-primary">
+                                <i class="fas fa-play"></i> Bắt đầu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise Workspace -->
+                <div id="exerciseWorkspace" class="exercise-workspace" style="display: none;">
+                    <div class="workspace-header">
+                        <h3 id="exerciseTitle">Bài tập</h3>
+                        <button onclick="closeExercise()" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Đóng
+                        </button>
+                    </div>
+                    
+                    <div class="workspace-content">
+                        <div class="workspace-split">
+                            <div class="code-editor">
+                                <div class="editor-header">
+                                    <span>Code Editor</span>
+                                    <button onclick="runExerciseCode()" class="btn btn-success">
+                                        <i class="fas fa-play"></i> Chạy
+                                    </button>
+                                </div>
+                                <textarea id="exerciseCode" class="code-textarea" placeholder="Viết code của bạn ở đây..."></textarea>
+                            </div>
+                            
+                            <div class="output-panel">
+                                <div class="panel-header">
+                                    <span>Kết quả</span>
+                                    <button onclick="clearOutput()" class="btn btn-secondary btn-sm">Xóa</button>
+                                </div>
+                                <div id="exerciseOutput" class="output-content"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-instructions" id="exerciseInstructions">
+                            <!-- Instructions will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JavaScript OOP</h4>
+                    <p>Lập trình hướng đối tượng trong JavaScript ES6+</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Nội dung</h4>
+                    <ul>
+                        <li><a href="#intro">Giới thiệu</a></li>
+                        <li><a href="#classes">Classes</a></li>
+                        <li><a href="#inheritance">Inheritance</a></li>
+                        <li><a href="#encapsulation">Encapsulation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tài nguyên</h4>
+                    <ul>
+                        <li><a href="#exercises">Bài tập</a></li>
+                        <li><a href="examples/">Ví dụ</a></li>
+                        <li><a href="README.md">Tài liệu</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Frontend Mentor Course. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="js/examples.js"></script>
+    <script src="js/exercises.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+$font-stack: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$colors: (
+  primary: #4c6ef5,
+  secondary: #f97316,
+  ghost: transparent,
+  foreground: #1e293b,
+  surface: #0f172a,
+  muted: #cbd5f5
+);
+$button-variants: (
+  primary: (
+    background: map-get($colors, primary),
+    color: white,
+    hover-shadow: rgba(76, 110, 245, 0.4)
+  ),
+  secondary: (
+    background: map-get($colors, secondary),
+    color: #0f172a,
+    hover-shadow: rgba(249, 115, 22, 0.5)
+  ),
+  ghost: (
+    background: rgba(255, 255, 255, 0.08),
+    color: white,
+    hover-shadow: rgba(148, 163, 184, 0.35)
+  )
+);
+
+%glass-panel {
+  background: rgba(15, 23, 42, 0.72);
+  border-radius: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(18px);
+}
+
+@mixin button($background, $color, $hover-shadow) {
+  padding: 0.85rem 2.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  background: $background;
+  color: $color;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 25px 50px -30px $hover-shadow;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 30px 50px -28px $hover-shadow;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, rgba(76, 110, 245, 0.25), transparent 60%),
+              radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.25), transparent 55%),
+              #0f172a;
+  color: map-get($colors, muted);
+}
+
+.hero {
+  @extend %glass-panel;
+  max-width: 960px;
+  margin: clamp(2rem, 5vw, 5rem) auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.hero__badge {
+  display: inline-flex;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+  color: white;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: white;
+  margin: 1.5rem 0 1rem;
+}
+
+.hero__subtitle {
+  margin: 0 auto 2rem;
+  max-width: 560px;
+}
+
+.hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  @include button(map-get($colors, primary), white, rgba(76, 110, 245, 0.4));
+  &--ghost {
+    @include button(rgba(255, 255, 255, 0.12), white, rgba(148, 163, 184, 0.35));
+    border: 1px solid rgba(148, 163, 184, 0.3);
+  }
+}
+
+@each $name, $settings in $button-variants {
+  .btn--#{$name} {
+    @include button(map-get($settings, background), map-get($settings, color), map-get($settings, hover-shadow));
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 clamp(1.5rem, 5vw, 3rem) 4rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.cards__item {
+  @extend %glass-panel;
+  padding: 1.75rem;
+  color: white;
+}
+
+.cards__item h2 {
+  margin-top: 0;
+}

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>🔲 Bài 3: CSS Flexbox & Grid - Layout hiện đại</title>
+	<link rel="stylesheet" href="./css/styles-bem.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="loading">
+	<!-- Loading Spinner -->
+	<div id="loadingSpinner" class="loading-spinner">
+		<div class="spinner"></div>
+		<div class="loading-spinner__content">
+			<h2 class="loading-spinner__title">CSS Flexbox & Grid</h2>
+			<p class="loading-spinner__subtitle">Đang tải nội dung học tập...</p>
+			<div class="loading-progress">
+				<div class="loading-progress__bar"></div>
+			</div>
+			<div class="loading-dots">
+				<div class="loading-dot"></div>
+				<div class="loading-dot"></div>
+				<div class="loading-dot"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Navigation -->
+	<nav class="navbar">
+		<div class="navbar__container">
+			<div class="navbar__brand">
+				<i class="fas fa-th-large navbar__brand-icon"></i>
+				<span class="navbar__brand-text">Flexbox & Grid</span>
+			</div>
+			<ul class="navbar__menu">
+                                <li class="navbar__item">
+                                        <a href="#roadmap" class="navbar__link">Lộ trình</a>
+                                </li>
+                                <li class="navbar__item">
+                                        <a href="#flexbox" class="navbar__link">Flexbox</a>
+                                </li>
+                                <li class="navbar__item">
+                                        <a href="#grid" class="navbar__link">Grid</a>
+                                </li>
+                                <li class="navbar__item">
+                                        <a href="#practice" class="navbar__link">Thực hành</a>
+                                </li>
+                                <li class="navbar__item">
+                                        <a href="#comparison" class="navbar__link">So sánh</a>
+                                </li>
+			</ul>
+			<button class="navbar__toggle" id="navbar-toggle">
+				<span class="navbar__toggle-bar"></span>
+				<span class="navbar__toggle-bar"></span>
+				<span class="navbar__toggle-bar"></span>
+			</button>
+		</div>
+	</nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+                <div class="hero__container">
+			<div class="hero__content">
+				<div class="hero__badge">
+					<i class="fas fa-graduation-cap"></i>
+					<span>Bài học số 3</span>
+				</div>
+				<h1 class="hero__title">CSS Flexbox & Grid</h1>
+				<p class="hero__subtitle">
+					Học layout hiện đại - từ Flexbox 1D đến Grid 2D.
+					Tạo ra những layout professional và responsive.
+				</p>
+				<div class="hero__buttons">
+					<button class="hero__button hero__button--primary" onclick="scrollToSection('flexbox')">
+						<i class="fas fa-play"></i>
+						Bắt đầu với Flexbox
+					</button>
+					<button class="hero__button hero__button--secondary" onclick="scrollToSection('grid')">
+						<i class="fas fa-th"></i>
+						Khám phá Grid
+					</button>
+				</div>
+			</div>
+			<div class="hero__visual">
+				<div class="hero__demo-container">
+					<div class="hero__demo-title">Layout Evolution</div>
+					<div class="hero__demo-item">
+						<span class="hero__demo-label">Float</span>
+						<div class="hero__demo-old">
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+						</div>
+					</div>
+					<div class="hero__demo-item">
+						<span class="hero__demo-label">Flexbox</span>
+						<div class="hero__demo-flex">
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+						</div>
+					</div>
+					<div class="hero__demo-item">
+						<span class="hero__demo-label">Grid</span>
+						<div class="hero__demo-grid">
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+							<div class="hero__demo-box"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+                </div>
+        </section>
+
+        <!-- Curriculum Roadmap -->
+        <section id="roadmap" class="roadmap">
+                <div class="roadmap__container">
+                        <div class="section-header roadmap__header">
+                                <h2 class="section-header__title">
+                                        <i class="fas fa-route"></i>
+                                        Lộ trình Flexbox &amp; Grid từ cơ bản đến nâng cao
+                                </h2>
+                                <p class="section-header__subtitle">
+                                        Cập nhật từng phần trong <code>index.html</code> theo ba giai đoạn: nền tảng, ứng dụng và tối ưu hoá.
+                                </p>
+                        </div>
+                        <div class="roadmap__steps">
+                                <article class="roadmap__step roadmap__step--foundation">
+                                        <div class="roadmap__badge">
+                                                <span class="roadmap__stage">Giai đoạn 1</span>
+                                                <span class="roadmap__time">~45 phút</span>
+                                        </div>
+                                        <h3 class="roadmap__title">Nền tảng Flexbox</h3>
+                                        <p class="roadmap__description">
+                                                Ôn lại cấu trúc HTML, thêm các section giới thiệu, demo thuộc tính và các ví dụ BEM.
+                                        </p>
+                                        <ul class="roadmap__list">
+                                                <li>Chuẩn hoá phần hero và navigation theo BEM.</li>
+                                                <li>Bổ sung giải thích thuộc tính chính trong khối <strong>Flexbox Basics</strong>.</li>
+                                                <li>Chèn ví dụ mã cho <code>display</code>, <code>justify-content</code>, <code>align-items</code>.</li>
+                                        </ul>
+                                        <a class="roadmap__cta" href="#flexbox">Đi tới phần Flexbox</a>
+                                </article>
+                                <article class="roadmap__step roadmap__step--intermediate">
+                                        <div class="roadmap__badge">
+                                                <span class="roadmap__stage">Giai đoạn 2</span>
+                                                <span class="roadmap__time">~60 phút</span>
+                                        </div>
+                                        <h3 class="roadmap__title">Ứng dụng Grid 2D</h3>
+                                        <p class="roadmap__description">
+                                                Mở rộng HTML với ví dụ Grid, bảng so sánh và bài tập thực hành theo README.
+                                        </p>
+                                        <ul class="roadmap__list">
+                                                <li>Tạo demo <strong>grid-template-areas</strong> và <code>repeat()</code>.</li>
+                                                <li>Liên kết hoạt động thực hành với section <em>Practice Labs</em>.</li>
+                                                <li>Làm rõ sự khác biệt Flexbox vs Grid bằng bảng so sánh.</li>
+                                        </ul>
+                                        <a class="roadmap__cta" href="#grid">Đi tới phần Grid</a>
+                                </article>
+                                <article class="roadmap__step roadmap__step--advanced">
+                                        <div class="roadmap__badge">
+                                                <span class="roadmap__stage">Giai đoạn 3</span>
+                                                <span class="roadmap__time">~30 phút</span>
+                                        </div>
+                                        <h3 class="roadmap__title">Tối ưu hoá &amp; mở rộng</h3>
+                                        <p class="roadmap__description">
+                                                Hoàn thiện trang với thử thách lab, tài nguyên học tập và lời kêu gọi hành động.
+                                        </p>
+                                        <ul class="roadmap__list">
+                                                <li>Kết nối thử thách cuối khoá với phần <strong>Lab Challenge</strong>.</li>
+                                                <li>Thêm call-to-action dẫn tới bài tập về nhà và tài nguyên.</li>
+                                                <li>Đảm bảo phần <em>Next Steps</em> gợi ý bài học tiếp theo.</li>
+                                        </ul>
+                                        <a class="roadmap__cta" href="#practice">Đi tới phần thực hành</a>
+                                </article>
+                        </div>
+                </div>
+        </section>
+
+	<!-- Flexbox Section -->
+	<section id="flexbox" class="flexbox-section">
+		<div class="flexbox-section__container">
+			<div class="section-header">
+				<h2 class="section-header__title">
+					<i class="fas fa-arrows-alt-h"></i>
+					CSS Flexbox - Layout 1 chiều
+				</h2>
+				<p class="section-header__subtitle">
+					Flexible Box Layout - Hoàn hảo cho layout theo hàng hoặc cột
+				</p>
+			</div>
+
+			<!-- Flexbox Basics -->
+			<div class="flexbox-basics">
+				<div class="flexbox-basics__content">
+					<h3 class="flexbox-basics__title">Flexbox là gì?</h3>
+					<p class="flexbox-basics__description">
+						Flexbox (Flexible Box Layout) là phương pháp layout 1 chiều,
+						giúp sắp xếp các phần tử theo hàng (row) hoặc cột (column) một cách linh hoạt.
+					</p>
+					<div class="flexbox-basics__features">
+						<div class="flexbox-basics__feature">
+							<i class="fas fa-check"></i>
+							<span>Căn chỉnh dễ dàng</span>
+						</div>
+						<div class="flexbox-basics__feature">
+							<i class="fas fa-check"></i>
+							<span>Phân bổ không gian tự động</span>
+						</div>
+						<div class="flexbox-basics__feature">
+							<i class="fas fa-check"></i>
+							<span>Responsive tuyệt vời</span>
+						</div>
+					</div>
+				</div>
+				<div class="flexbox-basics__demo">
+					<div class="code-demo">
+						<div class="code-demo__header">
+							<span class="code-demo__title">CSS</span>
+						</div>
+						<div class="code-demo__content">
+							<code>
+.container {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;justify-content: center;<br>
+&nbsp;&nbsp;align-items: center;<br>
+&nbsp;&nbsp;gap: 1rem;<br>
+}
+                            </code>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Flexbox Properties -->
+			<div class="flexbox-properties">
+				<h3 class="flexbox-properties__title">Thuộc tính chính của Flexbox</h3>
+				<div class="flexbox-properties__grid">
+					<div class="property-card">
+						<div class="property-card__header">
+							<h4>justify-content</h4>
+							<span class="property-card__type">Main Axis</span>
+						</div>
+						<div class="property-card__demo" id="justify-demo">
+							<div class="flex-container flex-container--justify">
+								<div class="flex-item">1</div>
+								<div class="flex-item">2</div>
+								<div class="flex-item">3</div>
+							</div>
+						</div>
+						<div class="property-card__controls">
+							<button onclick="changeJustify('flex-start')">flex-start</button>
+							<button onclick="changeJustify('center')">center</button>
+							<button onclick="changeJustify('flex-end')">flex-end</button>
+							<button onclick="changeJustify('space-between')">space-between</button>
+						</div>
+					</div>
+
+					<div class="property-card">
+						<div class="property-card__header">
+							<h4>align-items</h4>
+							<span class="property-card__type">Cross Axis</span>
+						</div>
+						<div class="property-card__demo" id="align-demo">
+							<div class="flex-container flex-container--align">
+								<div class="flex-item">1</div>
+								<div class="flex-item flex-item--tall">2</div>
+								<div class="flex-item">3</div>
+							</div>
+						</div>
+						<div class="property-card__controls">
+							<button onclick="changeAlign('stretch')">stretch</button>
+							<button onclick="changeAlign('flex-start')">flex-start</button>
+							<button onclick="changeAlign('center')">center</button>
+							<button onclick="changeAlign('flex-end')">flex-end</button>
+						</div>
+					</div>
+
+					<div class="property-card">
+						<div class="property-card__header">
+							<h4>flex-direction</h4>
+							<span class="property-card__type">Direction</span>
+						</div>
+						<div class="property-card__demo" id="direction-demo">
+							<div class="flex-container flex-container--direction">
+								<div class="flex-item">1</div>
+								<div class="flex-item">2</div>
+								<div class="flex-item">3</div>
+							</div>
+						</div>
+						<div class="property-card__controls">
+							<button onclick="changeDirection('row')">row</button>
+							<button onclick="changeDirection('column')">column</button>
+							<button onclick="changeDirection('row-reverse')">row-reverse</button>
+						</div>
+					</div>
+
+					<div class="property-card">
+						<div class="property-card__header">
+							<h4>flex-wrap</h4>
+							<span class="property-card__type">Wrapping</span>
+						</div>
+						<div class="property-card__demo" id="wrap-demo">
+							<div class="flex-container flex-container--wrap">
+								<div class="flex-item flex-item--wide">1</div>
+								<div class="flex-item flex-item--wide">2</div>
+								<div class="flex-item flex-item--wide">3</div>
+								<div class="flex-item flex-item--wide">4</div>
+							</div>
+						</div>
+						<div class="property-card__controls">
+							<button onclick="changeWrap('nowrap')">nowrap</button>
+							<button onclick="changeWrap('wrap')">wrap</button>
+							<button onclick="changeWrap('wrap-reverse')">wrap-reverse</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Grid Section -->
+	<section id="grid" class="grid-section">
+		<div class="grid-section__container">
+			<div class="section-header">
+				<h2 class="section-header__title">
+					<i class="fas fa-th"></i>
+					CSS Grid - Layout 2 chiều
+				</h2>
+				<p class="section-header__subtitle">
+					Grid Layout System - Mạnh mẽ cho layout phức tạp với hàng và cột
+				</p>
+			</div>
+
+			<!-- Grid Basics -->
+			<div class="grid-basics">
+				<div class="grid-basics__content">
+					<h3 class="grid-basics__title">CSS Grid là gì?</h3>
+					<p class="grid-basics__description">
+						CSS Grid là hệ thống layout 2 chiều, cho phép bạn tạo layout phức tạp
+						với cả hàng và cột một cách dễ dàng và linh hoạt.
+					</p>
+					<div class="grid-basics__features">
+						<div class="grid-basics__feature">
+							<i class="fas fa-check"></i>
+							<span>Layout 2 chiều (rows & columns)</span>
+						</div>
+						<div class="grid-basics__feature">
+							<i class="fas fa-check"></i>
+							<span>Grid areas dễ quản lý</span>
+						</div>
+						<div class="grid-basics__feature">
+							<i class="fas fa-check"></i>
+							<span>Responsive mạnh mẽ</span>
+						</div>
+					</div>
+				</div>
+				<div class="grid-basics__demo">
+					<div class="code-demo">
+						<div class="code-demo__header">
+							<span class="code-demo__title">CSS</span>
+						</div>
+						<div class="code-demo__content">
+							<code>
+.grid-container {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: 1fr 2fr 1fr;<br>
+&nbsp;&nbsp;grid-template-rows: auto 1fr auto;<br>
+&nbsp;&nbsp;gap: 1rem;<br>
+}
+                            </code>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Grid Properties -->
+			<div class="grid-properties">
+				<h3 class="grid-properties__title">Thuộc tính chính của Grid</h3>
+				<div class="grid-properties__demos">
+					<div class="grid-demo-card">
+						<h4 class="grid-demo-card__title">Template Columns</h4>
+						<div class="grid-demo-card__visual" id="grid-columns-demo">
+							<div class="grid-container grid-container--columns">
+								<div class="grid-item">1</div>
+								<div class="grid-item">2</div>
+								<div class="grid-item">3</div>
+								<div class="grid-item">4</div>
+								<div class="grid-item">5</div>
+								<div class="grid-item">6</div>
+							</div>
+						</div>
+						<div class="grid-demo-card__controls">
+							<button onclick="changeGridColumns('1fr 1fr 1fr')">1fr 1fr 1fr</button>
+							<button onclick="changeGridColumns('2fr 1fr 1fr')">2fr 1fr 1fr</button>
+							<button onclick="changeGridColumns('repeat(4, 1fr)')">repeat(4, 1fr)</button>
+						</div>
+					</div>
+
+					<div class="grid-demo-card">
+						<h4 class="grid-demo-card__title">Grid Areas</h4>
+						<div class="grid-demo-card__visual" id="grid-areas-demo">
+							<div class="grid-container grid-container--areas">
+								<div class="grid-item grid-item--header">Header</div>
+								<div class="grid-item grid-item--nav">Nav</div>
+								<div class="grid-item grid-item--main">Main</div>
+								<div class="grid-item grid-item--aside">Aside</div>
+								<div class="grid-item grid-item--footer">Footer</div>
+							</div>
+						</div>
+						<div class="grid-demo-card__controls">
+							<button onclick="changeGridAreas('layout1')">Layout 1</button>
+							<button onclick="changeGridAreas('layout2')">Layout 2</button>
+							<button onclick="changeGridAreas('layout3')">Layout 3</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Practice Section -->
+	<section id="practice" class="practice-section">
+		<div class="practice-section__container">
+			<div class="section-header">
+				<h2 class="section-header__title">
+					<i class="fas fa-code"></i>
+					Thực hành Layout
+				</h2>
+				<p class="section-header__subtitle">
+					Tạo các layout thực tế với Flexbox và Grid
+				</p>
+			</div>
+
+			<div class="practice-examples">
+				<!-- Example 1: Flexbox Navigation -->
+				<div class="practice-example">
+					<h3 class="practice-example__title">Flexbox - Navigation Bar</h3>
+					<div class="practice-example__demo">
+						<nav class="practice-nav">
+							<div class="practice-nav__logo">Logo</div>
+							<ul class="practice-nav__menu">
+								<li><a href="#">Home</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Services</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+							<div class="practice-nav__auth">
+								<button>Login</button>
+								<button>Sign Up</button>
+							</div>
+						</nav>
+					</div>
+					<div class="practice-example__code">
+						<div class="code-demo">
+							<div class="code-demo__header">
+								<span class="code-demo__title">CSS</span>
+							</div>
+							<div class="code-demo__content">
+								<code>
+.practice-nav {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;justify-content: space-between;<br>
+&nbsp;&nbsp;align-items: center;<br>
+}<br><br>
+.practice-nav__menu {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;gap: 2rem;<br>
+}
+                                </code>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Example 2: Grid Layout -->
+				<div class="practice-example">
+					<h3 class="practice-example__title">Grid - Website Layout</h3>
+					<div class="practice-example__demo">
+						<div class="practice-grid-layout">
+							<header class="practice-grid__header">Header</header>
+							<nav class="practice-grid__nav">Navigation</nav>
+							<main class="practice-grid__main">
+								<article class="practice-grid__article">
+									<h4>Article Title</h4>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+								</article>
+							</main>
+							<aside class="practice-grid__aside">
+								<div class="practice-grid__widget">Widget 1</div>
+								<div class="practice-grid__widget">Widget 2</div>
+							</aside>
+							<footer class="practice-grid__footer">Footer</footer>
+						</div>
+					</div>
+					<div class="practice-example__code">
+						<div class="code-demo">
+							<div class="code-demo__header">
+								<span class="code-demo__title">CSS</span>
+							</div>
+							<div class="code-demo__content">
+								<code>
+.practice-grid-layout {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-areas:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"header header header"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"nav main aside"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"footer footer footer";<br>
+&nbsp;&nbsp;grid-template-columns: 200px 1fr 250px;<br>
+}
+                                </code>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Example 3: Card Layout -->
+				<div class="practice-example">
+					<h3 class="practice-example__title">Combined - Card Grid</h3>
+					<div class="practice-example__demo">
+						<div class="practice-cards">
+							<div class="practice-card">
+								<div class="practice-card__header">
+									<i class="fas fa-laptop-code"></i>
+									<h4>Web Development</h4>
+								</div>
+								<div class="practice-card__content">
+									<p>Build modern websites with HTML, CSS, and JavaScript</p>
+								</div>
+								<div class="practice-card__footer">
+									<button>Learn More</button>
+								</div>
+							</div>
+							<div class="practice-card">
+								<div class="practice-card__header">
+									<i class="fas fa-mobile-alt"></i>
+									<h4>Mobile Apps</h4>
+								</div>
+								<div class="practice-card__content">
+									<p>Create responsive mobile applications</p>
+								</div>
+								<div class="practice-card__footer">
+									<button>Learn More</button>
+								</div>
+							</div>
+							<div class="practice-card">
+								<div class="practice-card__header">
+									<i class="fas fa-database"></i>
+									<h4>Database</h4>
+								</div>
+								<div class="practice-card__content">
+									<p>Design and manage databases efficiently</p>
+								</div>
+								<div class="practice-card__footer">
+									<button>Learn More</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="practice-example__code">
+						<div class="code-demo">
+							<div class="code-demo__header">
+								<span class="code-demo__title">CSS</span>
+							</div>
+							<div class="code-demo__content">
+								<code>
+.practice-cards {<br>
+&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));<br>
+&nbsp;&nbsp;gap: 2rem;<br>
+}<br><br>
+.practice-card {<br>
+&nbsp;&nbsp;display: flex;<br>
+&nbsp;&nbsp;flex-direction: column;<br>
+}
+                                </code>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Comparison Section -->
+	<section id="comparison" class="comparison-section">
+		<div class="comparison-section__container">
+			<div class="section-header">
+				<h2 class="section-header__title">
+					<i class="fas fa-balance-scale"></i>
+					Flexbox vs Grid - Khi nào dùng gì?
+				</h2>
+				<p class="section-header__subtitle">
+					Hiểu rõ điểm mạnh của từng layout method
+				</p>
+			</div>
+
+			<div class="comparison-table">
+				<div class="comparison-table__header">
+					<div class="comparison-table__cell comparison-table__cell--empty"></div>
+					<div class="comparison-table__cell comparison-table__cell--header">
+						<i class="fas fa-arrows-alt-h"></i>
+						<strong>Flexbox</strong>
+					</div>
+					<div class="comparison-table__cell comparison-table__cell--header">
+						<i class="fas fa-th"></i>
+						<strong>Grid</strong>
+					</div>
+				</div>
+
+				<div class="comparison-table__row">
+					<div class="comparison-table__cell comparison-table__cell--label">Kích thước</div>
+					<div class="comparison-table__cell">1 chiều (1D)</div>
+					<div class="comparison-table__cell">2 chiều (2D)</div>
+				</div>
+
+				<div class="comparison-table__row">
+					<div class="comparison-table__cell comparison-table__cell--label">Tốt nhất cho</div>
+					<div class="comparison-table__cell">Navigation, buttons, spacing</div>
+					<div class="comparison-table__cell">Page layout, complex designs</div>
+				</div>
+
+				<div class="comparison-table__row">
+					<div class="comparison-table__cell comparison-table__cell--label">Định hướng</div>
+					<div class="comparison-table__cell">Row hoặc Column</div>
+					<div class="comparison-table__cell">Rows VÀ Columns</div>
+				</div>
+
+				<div class="comparison-table__row">
+					<div class="comparison-table__cell comparison-table__cell--label">Browser Support</div>
+					<div class="comparison-table__cell">✅ Excellent (97%+)</div>
+					<div class="comparison-table__cell">✅ Very Good (95%+)</div>
+				</div>
+
+				<div class="comparison-table__row">
+					<div class="comparison-table__cell comparison-table__cell--label">Learning Curve</div>
+					<div class="comparison-table__cell">🟢 Easier</div>
+					<div class="comparison-table__cell">🟡 More Complex</div>
+				</div>
+			</div>
+
+			<div class="comparison-examples">
+				<div class="comparison-example">
+					<h3 class="comparison-example__title">Khi nào dùng Flexbox?</h3>
+					<ul class="comparison-example__list">
+						<li>Căn chỉnh elements trong 1 chiều</li>
+						<li>Navigation bars và menus</li>
+						<li>Button groups</li>
+						<li>Centering content</li>
+						<li>Equal height columns</li>
+					</ul>
+				</div>
+				<div class="comparison-example">
+					<h3 class="comparison-example__title">Khi nào dùng Grid?</h3>
+					<ul class="comparison-example__list">
+						<li>Page layout tổng thể</li>
+						<li>Complex 2D layouts</li>
+						<li>Card grids và galleries</li>
+						<li>Responsive layouts với areas</li>
+						<li>Overlapping elements</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Next Steps -->
+	<section class="next-steps">
+		<div class="next-steps__container">
+			<div class="next-steps__content">
+				<h2 class="next-steps__title">🚀 Bước tiếp theo</h2>
+				<p class="next-steps__subtitle">
+					Sau khi thành thạo Flexbox và Grid, bạn đã sẵn sàng cho:
+				</p>
+				<div class="next-steps__items">
+					<div class="next-step-item">
+						<i class="fas fa-mobile-alt"></i>
+						<h3>Advanced Responsive Design</h3>
+						<p>Mobile-first, breakpoints, containers</p>
+					</div>
+					<div class="next-step-item">
+						<i class="fas fa-magic"></i>
+						<h3>CSS Animations & Transitions</h3>
+						<p>Transform, keyframes, micro-interactions</p>
+					</div>
+					<div class="next-step-item">
+						<i class="fas fa-rocket"></i>
+						<h3>CSS Frameworks</h3>
+						<p>Bootstrap, Tailwind CSS, component libraries</p>
+					</div>
+				</div>
+				<button class="next-steps__button">
+					<i class="fas fa-arrow-right"></i>
+					Tiếp tục với Responsive Design
+				</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__content">
+				<div class="footer__section">
+					<h3 class="footer__title">Frontend Learning</h3>
+					<p class="footer__description">
+						Học lập trình frontend từ cơ bản đến nâng cao
+					</p>
+				</div>
+				<div class="footer__section">
+					<h4 class="footer__subtitle">Bài học</h4>
+					<ul class="footer__links">
+						<li><a href="../bai1/index.html" class="footer__link">Bài 1: HTML Basics</a></li>
+						<li><a href="../bai2/index.html" class="footer__link">Bài 2: CSS Selectors</a></li>
+						<li><a href="./index.html" class="footer__link">Bài 3: Flexbox & Grid</a></li>
+						<li><a href="#" class="footer__link">Bài 4: JavaScript</a></li>
+					</ul>
+				</div>
+				<div class="footer__section">
+					<h4 class="footer__subtitle">Liên kết</h4>
+					<div class="footer__social">
+						<a href="#" class="footer__social-link">
+							<i class="fab fa-github"></i>
+						</a>
+						<a href="#" class="footer__social-link">
+							<i class="fab fa-youtube"></i>
+						</a>
+						<a href="#" class="footer__social-link">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<p>&copy; 2025 Frontend Learning. Made with ❤️ for Vietnamese developers.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="./js/script.js"></script>
+</body>
+
+</html>

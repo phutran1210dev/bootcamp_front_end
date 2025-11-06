@@ -1,0 +1,363 @@
+<!-- file: index.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎯 Bài 2: CSS Selectors & Float Layout - Lộ trình Front-end</title>
+    <link href="./styles.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo">🎯 CSS Selectors & Layout</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#selectors">Selectors</a></li>
+                    <li><a href="#layout">Layout</a></li>
+                    <li><a href="#practice">Thực hành</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="clearfix"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-left">
+                <h2>Bài 2: Thành thạo CSS Selectors & Float Layout</h2>
+                <p class="hero-description">
+                    Sau khi đã học HTML cơ bản và CSS inline, bây giờ chúng ta sẽ tìm hiểu sâu về:
+                </p>
+                <ul class="hero-features">
+                    <li>✅ CSS Selectors nâng cao</li>
+                    <li>✅ Float layout cơ bản</li>
+                    <li>✅ Box Model chi tiết</li>
+                    <li>✅ Positioning elements</li>
+                </ul>
+                <button class="cta-button">Bắt đầu học ngay</button>
+            </div>
+            <div class="hero-right">
+                <div class="code-demo">
+                    <div class="code-header">styles.css</div>
+                    <div class="code-content">
+                        <span class="comment">/* CSS Selectors */</span><br>
+                        <span class="selector">.main-content</span> {<br>
+                        &nbsp;&nbsp;<span class="property">float</span>: <span class="value">left</span>;<br>
+                        &nbsp;&nbsp;<span class="property">width</span>: <span class="value">70%</span>;<br>
+                        }<br><br>
+                        <span class="selector">#sidebar</span> {<br>
+                        &nbsp;&nbsp;<span class="property">float</span>: <span class="value">right</span>;<br>
+                        &nbsp;&nbsp;<span class="property">width</span>: <span class="value">30%</span>;<br>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+
+    <!-- CSS Selectors Section -->
+    <section id="selectors" class="selectors-section">
+        <div class="container">
+            <h2 class="section-title">🎯 CSS Selectors - Chọn đúng mục tiêu</h2>
+            
+            <div class="selector-grid">
+                <div class="selector-card">
+                    <h3>Element Selector</h3>
+                    <div class="code-block">
+                        <code>
+                            p { color: blue; }<br>
+                            h1 { font-size: 2em; }
+                        </code>
+                    </div>
+                    <p>Chọn tất cả elements cùng loại</p>
+                </div>
+
+                <div class="selector-card">
+                    <h3>Class Selector</h3>
+                    <div class="code-block">
+                        <code>
+                            .highlight { background: yellow; }<br>
+                            .menu-item { padding: 10px; }
+                        </code>
+                    </div>
+                    <p>Chọn elements có class cụ thể</p>
+                </div>
+
+                <div class="selector-card">
+                    <h3>ID Selector</h3>
+                    <div class="code-block">
+                        <code>
+                            #header { height: 100px; }<br>
+                            #main-content { width: 80%; }
+                        </code>
+                    </div>
+                    <p>Chọn element có ID duy nhất</p>
+                </div>
+
+                <div class="selector-card">
+                    <h3>Descendant Selector</h3>
+                    <div class="code-block">
+                        <code>
+                            .menu a { text-decoration: none; }<br>
+                            div p { margin-bottom: 15px; }
+                        </code>
+                    </div>
+                    <p>Chọn elements con bên trong</p>
+                </div>
+
+                <div class="selector-card">
+                    <h3>Pseudo-classes</h3>
+                    <div class="code-block">
+                        <code>
+                            a:hover { color: red; }<br>
+                            li:first-child { font-weight: bold; }
+                        </code>
+                    </div>
+                    <p>Chọn theo trạng thái đặc biệt</p>
+                </div>
+
+                <div class="selector-card">
+                    <h3>Multiple Selectors</h3>
+                    <div class="code-block">
+                        <code>
+                            h1, h2, h3 { color: navy; }<br>
+                            .btn, .button { cursor: pointer; }
+                        </code>
+                    </div>
+                    <p>Áp dụng CSS cho nhiều selectors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Float Layout Section -->
+    <section id="layout" class="layout-section">
+        <div class="container">
+            <h2 class="section-title">📐 Float Layout - Chia cột truyền thống</h2>
+            
+            <div class="layout-explanation">
+                <div class="explanation-left">
+                    <h3>Float là gì?</h3>
+                    <p>Float là thuộc tính CSS cho phép elements "trôi" sang trái hoặc phải, 
+                    text và elements khác sẽ bao quanh nó.</p>
+                    
+                    <h4>Các giá trị của Float:</h4>
+                    <ul>
+                        <li><strong>left:</strong> Element trôi sang trái</li>
+                        <li><strong>right:</strong> Element trôi sang phải</li>
+                        <li><strong>none:</strong> Không float (mặc định)</li>
+                        <li><strong>inherit:</strong> Kế thừa từ parent</li>
+                    </ul>
+                </div>
+                <div class="explanation-right">
+                    <div class="float-demo">
+                        <div class="demo-title">Demo Float Layout</div>
+                        <div class="demo-container">
+                            <div class="demo-header">Header</div>
+                            <div class="demo-sidebar">Sidebar<br>(float: left)</div>
+                            <div class="demo-content">Main Content<br>(float: right)</div>
+                            <div class="demo-footer">Footer (clear: both)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Examples -->
+    <section id="practice" class="practice-section">
+        <div class="container">
+            <h2 class="section-title">💻 Thực hành - Website 2 cột</h2>
+            
+            <div class="practice-layout">
+                <div class="practice-main">
+                    <article class="blog-post">
+                        <h3>Bài viết mẫu</h3>
+                        <p class="post-meta">Đăng bởi <strong>Admin</strong> - 6 tháng 11, 2025</p>
+                        <p>Đây là một bài viết mẫu để demo layout 2 cột sử dụng float. 
+                        Main content sẽ chiếm 70% width và float left.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#" class="read-more">Đọc tiếp...</a>
+                    </article>
+
+                    <article class="blog-post">
+                        <h3>Bài viết thứ 2</h3>
+                        <p class="post-meta">Đăng bởi <strong>Editor</strong> - 5 tháng 11, 2025</p>
+                        <p>Một bài viết khác để thấy cách content flow trong layout float.</p>
+                        <a href="#" class="read-more">Đọc tiếp...</a>
+                    </article>
+                </div>
+
+                <aside class="practice-sidebar">
+                    <div class="sidebar-widget">
+                        <h4>Widget 1</h4>
+                        <ul>
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4>Widget 2</h4>
+                        <p>Sidebar content chiếm 30% width và float right.</p>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4>Search</h4>
+                        <input type="text" placeholder="Tìm kiếm..." class="search-input">
+                        <button class="search-btn">Tìm</button>
+                    </div>
+                </aside>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <h2 class="section-title">💡 Tips & Tricks quan trọng</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">⚠️</div>
+                    <h3>Clearfix Pattern</h3>
+                    <p>Luôn nhớ clear float để tránh layout bị vỡ:</p>
+                    <div class="code-block">
+                        <code>
+                            .clearfix::after {<br>
+                            &nbsp;&nbsp;content: "";<br>
+                            &nbsp;&nbsp;display: table;<br>
+                            &nbsp;&nbsp;clear: both;<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📏</div>
+                    <h3>Box-sizing</h3>
+                    <p>Sử dụng border-box để tính toán dễ dàng:</p>
+                    <div class="code-block">
+                        <code>
+                            * {<br>
+                            &nbsp;&nbsp;box-sizing: border-box;<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🎯</div>
+                    <h3>Specificity</h3>
+                    <p>CSS Specificity (độ ưu tiên):</p>
+                    <ul>
+                        <li>Inline styles: 1000</li>
+                        <li>IDs: 100</li>
+                        <li>Classes: 10</li>
+                        <li>Elements: 1</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔧</div>
+                    <h3>Debug CSS</h3>
+                    <p>Sử dụng border để debug layout:</p>
+                    <div class="code-block">
+                        <code>
+                            * {<br>
+                            &nbsp;&nbsp;border: 1px solid red;<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="next-section">
+        <div class="container">
+            <h2>🚀 Bước tiếp theo</h2>
+            <p>Sau khi thành thạo CSS Selectors và Float, bạn sẽ sẵn sàng cho:</p>
+            <div class="next-steps">
+                <div class="next-step">
+                    <h3>Bài 3: CSS Flexbox & Grid</h3>
+                    <p>Layout hiện đại, mạnh mẽ và linh hoạt</p>
+                </div>
+                <div class="next-step">
+                    <h3>Bài 4: Responsive Design</h3>
+                    <p>Thiết kế website cho mọi thiết bị</p>
+                </div>
+                <div class="next-step">
+                    <h3>Bài 5: CSS Animations</h3>
+                    <p>Tạo hiệu ứng động hấp dẫn</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Frontend Learning</h3>
+                    <p>Học lập trình frontend từ cơ bản đến nâng cao</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2025 Frontend Learning. Made with ❤️ for Vietnamese developers.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for navigation
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // CTA button click
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function() {
+                    document.querySelector('#selectors').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Search functionality
+            const searchBtn = document.querySelector('.search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    const searchInput = document.querySelector('.search-input');
+                    if (searchInput.value.trim()) {
+                        alert('Tìm kiếm: ' + searchInput.value);
+                    }
+                });
+            }
+
+            console.log('🎯 Bài 2: CSS Selectors & Float Layout đã sẵn sàng!');
+        });
+    </script>
+</body>
+</html>

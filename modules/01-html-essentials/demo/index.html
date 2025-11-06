@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Phần HEAD chứa thông tin về trang web -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Học HTML Cơ Bản - Dành cho Người Mới Bắt Đầu</title>
+    
+    <!-- CSS đơn giản để trang đẹp hơn -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #007bff;
+            background-color: #f8f9fa;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 2px 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .code-example {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- TIÊU ĐỀ CHÍNH -->
+        <header>
+            <h1>🎯 Chào mừng bạn đến với HTML Cơ Bản!</h1>
+            <p><em>Trang web này sẽ dạy bạn những kiến thức HTML cơ bản nhất</em></p>
+        </header>
+
+        <!-- MỤC LỤC -->
+        <nav class="section">
+            <h2>📋 Mục lục</h2>
+            <ol>
+                <li><a href="#headings">Tiêu đề (Headings)</a></li>
+                <li><a href="#paragraphs">Đoạn văn (Paragraphs)</a></li>
+                <li><a href="#links">Liên kết (Links)</a></li>
+                <li><a href="#images">Hình ảnh (Images)</a></li>
+                <li><a href="#lists">Danh sách (Lists)</a></li>
+                <li><a href="#tables">Bảng (Tables)</a></li>
+                <li><a href="#forms">Biểu mẫu (Forms)</a></li>
+                <li><a href="#formatting">Định dạng văn bản</a></li>
+            </ol>
+        </nav>
+
+        <!-- 1. TIÊU ĐỀ -->
+        <section id="headings" class="section">
+            <h2>1. 📝 Tiêu đề (Headings)</h2>
+            <p>HTML có 6 cấp độ tiêu đề từ H1 đến H6:</p>
+            
+            <h1>H1 - Tiêu đề lớn nhất</h1>
+            <h2>H2 - Tiêu đề cấp 2</h2>
+            <h3>H3 - Tiêu đề cấp 3</h3>
+            <h4>H4 - Tiêu đề cấp 4</h4>
+            <h5>H5 - Tiêu đề cấp 5</h5>
+            <h6>H6 - Tiêu đề nhỏ nhất</h6>
+            
+            <div class="code-example">
+                &lt;h1&gt;Tiêu đề chính&lt;/h1&gt;<br>
+                &lt;h2&gt;Tiêu đề phụ&lt;/h2&gt;
+            </div>
+        </section>
+
+        <!-- 2. ĐOẠN VĂN -->
+        <section id="paragraphs" class="section">
+            <h2>2. 📄 Đoạn văn (Paragraphs)</h2>
+            <p>Đây là một đoạn văn bình thường. Thẻ &lt;p&gt; được dùng để tạo đoạn văn.</p>
+            <p>Đây là đoạn văn thứ hai. Mỗi thẻ &lt;p&gt; sẽ tạo ra một đoạn văn riêng biệt.</p>
+            
+            <p>Bạn có thể làm chữ <strong>đậm</strong>, <em>nghiêng</em>, hoặc <span class="highlight">tô sáng</span>.</p>
+            
+            <div class="code-example">
+                &lt;p&gt;Đây là một đoạn văn&lt;/p&gt;<br>
+                &lt;strong&gt;Chữ đậm&lt;/strong&gt;<br>
+                &lt;em&gt;Chữ nghiêng&lt;/em&gt;
+            </div>
+        </section>
+
+        <!-- 3. LIÊN KẾT -->
+        <section id="links" class="section">
+            <h2>3. 🔗 Liên kết (Links)</h2>
+            <p>Các loại liên kết khác nhau:</p>
+            
+            <ul>
+                <li><a href="https://google.com" target="_blank">🌐 Mở Google trong tab mới</a></li>
+                <li><a href="https://facebook.com" target="_self">📘 Mở Facebook trong tab hiện tại</a></li>
+                <li><a href="#headings">⬆️ Liên kết đến phần tiêu đề trên trang này</a></li>
+                <li><a href="mailto:example@email.com">📧 Gửi email</a></li>
+                <li><a href="tel:+84123456789">📞 Gọi điện thoại</a></li>
+            </ul>
+            
+            <div class="code-example">
+                &lt;a href="https://google.com" target="_blank"&gt;Liên kết đến Google&lt;/a&gt;<br>
+                &lt;a href="#section"&gt;Liên kết trong trang&lt;/a&gt;
+            </div>
+        </section>
+
+        <!-- 4. HÌNH ẢNH -->
+        <section id="images" class="section">
+            <h2>4. 🖼️ Hình ảnh (Images)</h2>
+            <p>Hiển thị hình ảnh từ internet và từ thư mục local:</p>
+            
+            <div style="text-align: center;">
+                <img src="https://picsum.photos/300/200" alt="Hình ảnh ngẫu nhiên từ internet" 
+                     style="max-width: 100%; border-radius: 10px; margin: 10px;">
+                <br>
+                <small><em>Hình ảnh từ internet (300x200px)</em></small>
+            </div>
+            
+            <div class="code-example">
+                &lt;img src="https://example.com/image.jpg" alt="Mô tả hình ảnh"&gt;<br>
+                &lt;img src="./images/my-image.jpg" alt="Hình từ thư mục local"&gt;
+            </div>
+        </section>
+
+        <!-- 5. DANH SÁCH -->
+        <section id="lists" class="section">
+            <h2>5. 📜 Danh sách (Lists)</h2>
+            
+            <h3>📍 Danh sách không có thứ tự (Unordered List):</h3>
+            <ul>
+                <li>🍎 Táo</li>
+                <li>🍌 Chuối</li>
+                <li>🍊 Cam</li>
+                <li>🍇 Nho</li>
+            </ul>
+            
+            <h3>🔢 Danh sách có thứ tự (Ordered List):</h3>
+            <ol>
+                <li>Bước 1: Mở trình duyệt web</li>
+                <li>Bước 2: Gõ địa chỉ website</li>
+                <li>Bước 3: Nhấn Enter</li>
+                <li>Bước 4: Xem nội dung</li>
+            </ol>
+            
+            <h3>📋 Danh sách định nghĩa (Definition List):</h3>
+            <dl>
+                <dt><strong>HTML</strong></dt>
+                <dd>HyperText Markup Language - Ngôn ngữ đánh dấu siêu văn bản</dd>
+                
+                <dt><strong>CSS</strong></dt>
+                <dd>Cascading Style Sheets - Ngôn ngữ tạo kiểu cho trang web</dd>
+                
+                <dt><strong>JavaScript</strong></dt>
+                <dd>Ngôn ngữ lập trình để tạo tương tác cho trang web</dd>
+            </dl>
+            
+            <div class="code-example">
+                &lt;ul&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;Mục 1&lt;/li&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;Mục 2&lt;/li&gt;<br>
+                &lt;/ul&gt;
+            </div>
+        </section>
+
+        <!-- 6. BẢNG -->
+        <section id="tables" class="section">
+            <h2>6. 📊 Bảng (Tables)</h2>
+            <p>Bảng điểm của học sinh:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên học sinh</th>
+                        <th>Môn Toán</th>
+                        <th>Môn Văn</th>
+                        <th>Môn Anh</th>
+                        <th>Điểm TB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>8.5</td>
+                        <td>7.0</td>
+                        <td>9.0</td>
+                        <td>8.2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Trần Thị B</td>
+                        <td>9.0</td>
+                        <td>8.5</td>
+                        <td>8.0</td>
+                        <td>8.5</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lê Văn C</td>
+                        <td>7.5</td>
+                        <td>8.0</td>
+                        <td>7.0</td>
+                        <td>7.5</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="code-example">
+                &lt;table&gt;<br>
+                &nbsp;&nbsp;&lt;tr&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Tiêu đề&lt;/th&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Tiêu đề&lt;/th&gt;<br>
+                &nbsp;&nbsp;&lt;/tr&gt;<br>
+                &nbsp;&nbsp;&lt;tr&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dữ liệu&lt;/td&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dữ liệu&lt;/td&gt;<br>
+                &nbsp;&nbsp;&lt;/tr&gt;<br>
+                &lt;/table&gt;
+            </div>
+        </section>
+
+        <!-- 7. BIỂU MẪU -->
+        <section id="forms" class="section">
+            <h2>7. 📝 Biểu mẫu (Forms)</h2>
+            <p>Ví dụ về form đăng ký đơn giản:</p>
+            
+            <form style="background: #f9f9f9; padding: 20px; border-radius: 5px;">
+                <label for="name">👤 Họ và tên:</label><br>
+                <input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn" style="width: 100%; padding: 8px; margin: 5px 0 15px 0;"><br>
+                
+                <label for="email">📧 Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="example@email.com" style="width: 100%; padding: 8px; margin: 5px 0 15px 0;"><br>
+                
+                <label for="age">🎂 Tuổi:</label><br>
+                <input type="number" id="age" name="age" min="1" max="100" style="width: 100%; padding: 8px; margin: 5px 0 15px 0;"><br>
+                
+                <label for="gender">⚧ Giới tính:</label><br>
+                <select id="gender" name="gender" style="width: 100%; padding: 8px; margin: 5px 0 15px 0;">
+                    <option value="">Chọn giới tính</option>
+                    <option value="male">Nam</option>
+                    <option value="female">Nữ</option>
+                    <option value="other">Khác</option>
+                </select><br>
+                
+                <label for="message">💬 Tin nhắn:</label><br>
+                <textarea id="message" name="message" rows="4" placeholder="Viết tin nhắn của bạn..." style="width: 100%; padding: 8px; margin: 5px 0 15px 0;"></textarea><br>
+                
+                <input type="checkbox" id="agree" name="agree">
+                <label for="agree">Tôi đồng ý với điều khoản sử dụng</label><br><br>
+                
+                <button type="submit" style="background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                    ✅ Gửi thông tin
+                </button>
+                <button type="reset" style="background: #6c757d; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">
+                    🔄 Xóa form
+                </button>
+            </form>
+            
+            <div class="code-example">
+                &lt;form&gt;<br>
+                &nbsp;&nbsp;&lt;input type="text" name="name" placeholder="Tên"&gt;<br>
+                &nbsp;&nbsp;&lt;input type="email" name="email" placeholder="Email"&gt;<br>
+                &nbsp;&nbsp;&lt;button type="submit"&gt;Gửi&lt;/button&gt;<br>
+                &lt;/form&gt;
+            </div>
+        </section>
+
+        <!-- 8. ĐỊNH DẠNG VĂN BẢN -->
+        <section id="formatting" class="section">
+            <h2>8. ✨ Định dạng văn bản</h2>
+            <p>Các cách định dạng văn bản khác nhau:</p>
+            
+            <ul>
+                <li><strong>Chữ đậm</strong> - sử dụng thẻ &lt;strong&gt;</li>
+                <li><em>Chữ nghiêng</em> - sử dụng thẻ &lt;em&gt;</li>
+                <li><u>Chữ gạch chân</u> - sử dụng thẻ &lt;u&gt;</li>
+                <li><del>Chữ gạch ngang</del> - sử dụng thẻ &lt;del&gt;</li>
+                <li><mark>Chữ tô sáng</mark> - sử dụng thẻ &lt;mark&gt;</li>
+                <li><small>Chữ nhỏ</small> - sử dụng thẻ &lt;small&gt;</li>
+                <li>H<sub>2</sub>O - chữ thấp (subscript)</li>
+                <li>E=MC<sup>2</sup> - chữ cao (superscript)</li>
+                <li><code>console.log("Hello")</code> - code</li>
+            </ul>
+            
+            <blockquote style="border-left: 4px solid #ccc; margin: 20px 0; padding: 10px 20px; background: #f9f9f9;">
+                <p><em>"Học một cách nghiêm túc, chơi một cách hết mình"</em></p>
+                <footer>— Steve Jobs</footer>
+            </blockquote>
+            
+            <div class="code-example">
+                &lt;strong&gt;Đậm&lt;/strong&gt;<br>
+                &lt;em&gt;Nghiêng&lt;/em&gt;<br>
+                &lt;mark&gt;Tô sáng&lt;/mark&gt;<br>
+                &lt;code&gt;Code&lt;/code&gt;
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="section">
+            <h2>🎓 Kết luận</h2>
+            <p>Kiến thức HTML cơ bản:</p>
+            <ul>
+                <li>✅ Cấu trúc HTML cơ bản</li>
+                <li>✅ Các thẻ tiêu đề và đoạn văn</li>
+                <li>✅ Tạo liên kết và hiển thị hình ảnh</li>
+                <li>✅ Tạo danh sách và bảng</li>
+                <li>✅ Tạo biểu mẫu đơn giản</li>
+                <li>✅ Định dạng văn bản</li>
+            </ul>
+            
+            <p><strong>Bước tiếp theo:</strong> Hãy học CSS để làm đẹp trang web của bạn!</p>
+            
+            <hr>
+            <p style="text-align: center; color: #666;">
+                <small>📅 Tạo ngày: November 2025 | 💻 Dành cho người mới bắt đầu học HTML</small>
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript đơn giản -->
+    <script>
+        // Thêm hiệu ứng cuộn mượt cho liên kết
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Thông báo khi submit form
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('🎉 Cảm ơn bạn! Đây chỉ là demo, form sẽ không được gửi thực sự.');
+        });
+        
+        console.log('🚀 Trang HTML cơ bản đã được tải thành công!');
+    </script>
+</body>
+</html>

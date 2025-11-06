@@ -1,0 +1,77 @@
+{
+  "updatedAt": "2024-03-15",
+  "modules": [
+    {
+      "id": "01",
+      "title": "HTML Essentials",
+      "summary": "Khám phá cấu trúc semantic, biểu mẫu và xây landing page đầu tiên.",
+      "demo": "modules/01-html-essentials/demo/index.html",
+      "project": "modules/01-html-essentials/project/index.html",
+      "tags": ["semantic", "form", "accessibility"]
+    },
+    {
+      "id": "02",
+      "title": "CSS Foundations",
+      "summary": "Làm chủ biến CSS, Flexbox, Grid và xây dựng style guide hoàn chỉnh.",
+      "demo": "modules/02-css-foundations/demo/index.html",
+      "project": "modules/02-css-foundations/project/index.html",
+      "tags": ["flexbox", "grid", "design system"]
+    },
+    {
+      "id": "03",
+      "title": "Bootstrap Essentials",
+      "summary": "Hiểu component core của Bootstrap và dựng landing page sự kiện.",
+      "demo": "modules/03-bootstrap-essentials/demo/index.html",
+      "project": "modules/03-bootstrap-essentials/project/index.html",
+      "tags": ["bootstrap", "components", "responsive"]
+    },
+    {
+      "id": "04",
+      "title": "Sass Workflow",
+      "summary": "Quy trình làm việc với biến, mixin, map để tự động hóa thiết kế.",
+      "demo": "modules/04-sass-workflow/demo/index.html",
+      "project": "modules/04-sass-workflow/project/index.html",
+      "tags": ["sass", "automation", "architecture"]
+    },
+    {
+      "id": "05",
+      "title": "Tailwind Utility-First",
+      "summary": "Tạo nhanh giao diện hiện đại bằng utility class và dark mode.",
+      "demo": "modules/05-tailwind-utility-first/demo/index.html",
+      "project": "modules/05-tailwind-utility-first/project/index.html",
+      "tags": ["tailwind", "dark mode", "utility-first"]
+    },
+    {
+      "id": "06",
+      "title": "JavaScript Basics",
+      "summary": "Làm quen với function, array, object và xây planner quản lý buổi học.",
+      "demo": "modules/06-javascript-basics/demo/index.html",
+      "project": "modules/06-javascript-basics/project/index.html",
+      "tags": ["fundamentals", "array", "object"]
+    },
+    {
+      "id": "07",
+      "title": "DOM Interactions",
+      "summary": "Xử lý sự kiện, thao tác DOM nâng cao và lưu dữ liệu bằng localStorage.",
+      "demo": "modules/07-dom-interactions/demo/index.html",
+      "project": "modules/07-dom-interactions/project/index.html",
+      "tags": ["dom", "events", "storage"]
+    },
+    {
+      "id": "08",
+      "title": "JavaScript Advanced",
+      "summary": "Áp dụng class, private field và mô hình state management đơn giản.",
+      "demo": "modules/08-javascript-advanced/demo/index.html",
+      "project": "modules/08-javascript-advanced/project/index.html",
+      "tags": ["oop", "state", "modular"]
+    },
+    {
+      "id": "09",
+      "title": "AJAX & API",
+      "summary": "Kết nối REST API, xử lý bất đồng bộ, abort request và hiển thị dữ liệu.",
+      "demo": "modules/09-ajax-data-fetching/demo/index.html",
+      "project": "modules/09-ajax-data-fetching/project/index.html",
+      "tags": ["api", "fetch", "async"]
+    }
+  ]
+}

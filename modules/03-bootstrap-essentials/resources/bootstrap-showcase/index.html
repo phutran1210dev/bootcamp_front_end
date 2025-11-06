@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🅱️ Bài 4: Bootstrap Framework - Build Fast, Responsive Websites</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="mt-3">
+            <h3 class="text-primary">Bootstrap Framework</h3>
+            <p class="text-muted">Đang tải nội dung học tập...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fab fa-bootstrap me-2"></i>
+                Bootstrap Learning
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#introduction">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#roadmap">Lộ trình</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#grid-system">Grid System</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#components">Components</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#utilities">Utilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#practice">Thực hành</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-primary text-white">
+        <div class="container">
+            <div class="row align-items-center min-vh-100 py-5">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <div class="badge bg-light text-primary mb-3 fs-6">
+                            <i class="fas fa-rocket me-1"></i>
+                            Bài học số 4
+                        </div>
+                        <h1 class="display-3 fw-bold mb-4">
+                            Bootstrap Framework
+                        </h1>
+                        <p class="lead mb-4">
+                            Học framework CSS phổ biến nhất thế giới. Xây dựng website responsive nhanh chóng với Bootstrap components và utility classes.
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <button class="btn btn-light btn-lg px-4" onclick="scrollToSection('introduction')">
+                                <i class="fas fa-play me-2"></i>
+                                Bắt đầu học
+                            </button>
+                            <button class="btn btn-outline-light btn-lg px-4" onclick="scrollToSection('practice')">
+                                <i class="fas fa-code me-2"></i>
+                                Thực hành ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual">
+                        <div class="bootstrap-demo-container p-4 bg-white rounded-3 shadow-lg">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="p-3 bg-primary text-white rounded text-center">
+                                        Header - Bootstrap Components
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="p-3 bg-light rounded">
+                                        <h6 class="text-primary">Main Content</h6>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" style="width: 75%"></div>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <span class="badge bg-success">Responsive</span>
+                                            <span class="badge bg-info">Mobile-First</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-3 bg-secondary text-white rounded text-center">
+                                        Sidebar
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="p-2 bg-dark text-white rounded text-center">
+                                        Footer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="badge bg-primary-subtle text-primary mb-3">Lộ trình cập nhật HTML</span>
+                    <h2 class="display-6 fw-bold">Từng bước nâng cấp landing page Bootstrap</h2>
+                    <p class="text-muted">Áp dụng README để cập nhật `index.html` theo ba giai đoạn: nền tảng, mở rộng component và tối ưu hóa trải nghiệm.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm roadmap-card roadmap-card--foundation">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-3">
+                                <i class="fas fa-layer-group me-2 text-primary"></i>
+                                Giai đoạn 1 – Cơ bản
+                            </h3>
+                            <p class="text-muted">Thiết lập khung Bootstrap chuẩn và nội dung giới thiệu.</p>
+                            <ul class="list-unstyled roadmap-list">
+                                <li>Thêm mục lộ trình trong navbar &amp; hero.</li>
+                                <li>Chuẩn hoá section Giới thiệu với 3 lợi ích chính.</li>
+                                <li>Bổ sung snippet cấu trúc CDN và file dự án.</li>
+                            </ul>
+                            <a href="#introduction" class="btn btn-outline-primary btn-sm rounded-pill mt-3">
+                                Bắt đầu từ Giới thiệu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm roadmap-card roadmap-card--intermediate">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-3">
+                                <i class="fas fa-th-large me-2 text-success"></i>
+                                Giai đoạn 2 – Ứng dụng
+                            </h3>
+                            <p class="text-muted">Mở rộng nội dung với Grid System, components và ví dụ utilities.</p>
+                            <ul class="list-unstyled roadmap-list">
+                                <li>Trình bày demo grid 12 cột và breakpoint.</li>
+                                <li>Liên kết tới section Components và Utilities.</li>
+                                <li>Chèn lời dẫn tới Guided Practice và Lab.</li>
+                            </ul>
+                            <a href="#grid-system" class="btn btn-outline-success btn-sm rounded-pill mt-3">
+                                Đi tới Grid System
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm roadmap-card roadmap-card--advanced">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-3">
+                                <i class="fas fa-rocket me-2 text-info"></i>
+                                Giai đoạn 3 – Nâng cao
+                            </h3>
+                            <p class="text-muted">Hoàn thiện landing page, CTA và liên kết tài nguyên.</p>
+                            <ul class="list-unstyled roadmap-list">
+                                <li>Kết nối Lab Challenge với phần Practice.</li>
+                                <li>Thêm call-to-action tới tài liệu tham khảo.</li>
+                                <li>Đảm bảo phần footer và form đáp ứng rubric.</li>
+                            </ul>
+                            <a href="#practice" class="btn btn-outline-info btn-sm rounded-pill mt-3">
+                                Hoàn thiện phần Thực hành
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">
+                        <i class="fab fa-bootstrap text-primary me-3"></i>
+                        Bootstrap là gì?
+                    </h2>
+                    <p class="lead text-muted">
+                        Bootstrap là framework CSS mạnh mẽ nhất để xây dựng responsive websites nhanh chóng
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-mobile-alt fs-4"></i>
+                            </div>
+                            <h5 class="card-title">Mobile-First</h5>
+                            <p class="card-text text-muted">
+                                Thiết kế responsive từ mobile đến desktop với grid system linh hoạt
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-puzzle-piece fs-4"></i>
+                            </div>
+                            <h5 class="card-title">Rich Components</h5>
+                            <p class="card-text text-muted">
+                                Hàng trăm component có sẵn: buttons, cards, modals, navigation...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-warning bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-palette fs-4"></i>
+                            </div>
+                            <h5 class="card-title">Customizable</h5>
+                            <p class="card-text text-muted">
+                                Dễ dàng tùy chỉnh với CSS variables và Sass
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bootstrap Advantages -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4">Tại sao chọn Bootstrap?</h3>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                <span>Tiết kiệm thời gian phát triển đáng kể</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                <span>Responsive design tự động</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                <span>Cross-browser compatibility</span>
+                            </div>
+                        </div>
+                        <div class="list-group-item border-0 px-0">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-3"></i>
+                                <span>Cộng đồng lớn và documentation tốt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="code-example bg-dark rounded p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="d-flex gap-1">
+                                <div class="code-dot bg-danger rounded-circle" style="width: 12px; height: 12px;"></div>
+                                <div class="code-dot bg-warning rounded-circle" style="width: 12px; height: 12px;"></div>
+                                <div class="code-dot bg-success rounded-circle" style="width: 12px; height: 12px;"></div>
+                            </div>
+                            <span class="text-white ms-3 small">CDN Link</span>
+                        </div>
+                        <pre class="text-light mb-0"><code>&lt;!-- Bootstrap CSS --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/
+bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+rel="stylesheet"&gt;
+
+&lt;!-- Bootstrap JS --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/
+bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"&gt;
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid System Section -->
+    <section id="grid-system" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">
+                        <i class="fas fa-th text-primary me-3"></i>
+                        Bootstrap Grid System
+                    </h2>
+                    <p class="lead text-muted">
+                        Hệ thống lưới 12 cột linh hoạt để tạo layout responsive
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grid Basics -->
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4">Container, Row & Column</h3>
+                    <p class="text-muted mb-4">
+                        Bootstrap grid bao gồm 3 thành phần chính: Container (chứa nội dung), Row (hàng) và Column (cột).
+                    </p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Lưu ý:</strong> Luôn đặt columns bên trong rows, và rows bên trong containers.
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="code-example bg-dark rounded p-4">
+                        <pre class="text-light mb-0"><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6"&gt;Column 1&lt;/div&gt;
+    &lt;div class="col-md-6"&gt;Column 2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Grid Demo -->
+            <div class="card border-0 shadow-sm mb-5">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-play-circle me-2"></i>
+                        Demo tương tác: Grid Breakpoints
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Chọn breakpoint:</label>
+                        <div class="btn-group" role="group">
+                            <input type="radio" class="btn-check" name="gridBreakpoint" id="grid-xs" value="col" checked>
+                            <label class="btn btn-outline-primary" for="grid-xs">XS (col)</label>
+                            
+                            <input type="radio" class="btn-check" name="gridBreakpoint" id="grid-sm" value="col-sm">
+                            <label class="btn btn-outline-primary" for="grid-sm">SM (≥576px)</label>
+                            
+                            <input type="radio" class="btn-check" name="gridBreakpoint" id="grid-md" value="col-md">
+                            <label class="btn btn-outline-primary" for="grid-md">MD (≥768px)</label>
+                            
+                            <input type="radio" class="btn-check" name="gridBreakpoint" id="grid-lg" value="col-lg">
+                            <label class="btn btn-outline-primary" for="grid-lg">LG (≥992px)</label>
+                        </div>
+                    </div>
+                    
+                    <div id="grid-demo" class="border rounded p-3 bg-light">
+                        <div class="row g-2">
+                            <div class="col-12 col-md-6">
+                                <div class="p-3 bg-primary text-white rounded text-center">
+                                    Column 1
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="p-3 bg-success text-white rounded text-center">
+                                    Column 2
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2 mt-2">
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 bg-warning text-white rounded text-center">
+                                    Column 3
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 bg-info text-white rounded text-center">
+                                    Column 4
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="p-3 bg-danger text-white rounded text-center">
+                                    Column 5
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            <i class="fas fa-desktop me-1"></i>
+                            Thay đổi kích thước trình duyệt để xem grid responsive
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Examples -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">Equal Width Columns</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2 mb-3">
+                                <div class="col">
+                                    <div class="p-2 bg-primary text-white rounded text-center small">col</div>
+                                </div>
+                                <div class="col">
+                                    <div class="p-2 bg-primary text-white rounded text-center small">col</div>
+                                </div>
+                                <div class="col">
+                                    <div class="p-2 bg-primary text-white rounded text-center small">col</div>
+                                </div>
+                            </div>
+                            <code class="small">&lt;div class="col"&gt;</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h5 class="mb-0">Specific Widths</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-2 mb-3">
+                                <div class="col-3">
+                                    <div class="p-2 bg-success text-white rounded text-center small">col-3</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-2 bg-success text-white rounded text-center small">col-6</div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="p-2 bg-success text-white rounded text-center small">col-3</div>
+                                </div>
+                            </div>
+                            <code class="small">&lt;div class="col-6"&gt;</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Section -->
+    <section id="components" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">
+                        <i class="fas fa-cubes text-primary me-3"></i>
+                        Bootstrap Components
+                    </h2>
+                    <p class="lead text-muted">
+                        Khám phá các component phổ biến của Bootstrap
+                    </p>
+                </div>
+            </div>
+
+            <!-- Components Tabs -->
+            <div class="card border-0 shadow">
+                <div class="card-header bg-white">
+                    <ul class="nav nav-tabs card-header-tabs" id="componentsTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="buttons-tab" data-bs-toggle="tab" data-bs-target="#buttons" type="button">
+                                <i class="fas fa-hand-pointer me-2"></i>Buttons
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="cards-tab" data-bs-toggle="tab" data-bs-target="#cards" type="button">
+                                <i class="fas fa-id-card me-2"></i>Cards
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="forms-tab" data-bs-toggle="tab" data-bs-target="#forms" type="button">
+                                <i class="fas fa-edit me-2"></i>Forms
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="alerts-tab" data-bs-toggle="tab" data-bs-target="#alerts" type="button">
+                                <i class="fas fa-exclamation-triangle me-2"></i>Alerts
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="componentsTabContent">
+                        <!-- Buttons Tab -->
+                        <div class="tab-pane fade show active" id="buttons" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h4 class="fw-bold mb-3">Button Styles</h4>
+                                    <div class="d-flex flex-wrap gap-2 mb-4">
+                                        <button type="button" class="btn btn-primary">Primary</button>
+                                        <button type="button" class="btn btn-secondary">Secondary</button>
+                                        <button type="button" class="btn btn-success">Success</button>
+                                        <button type="button" class="btn btn-danger">Danger</button>
+                                        <button type="button" class="btn btn-warning">Warning</button>
+                                        <button type="button" class="btn btn-info">Info</button>
+                                    </div>
+                                    
+                                    <h5 class="fw-bold mb-3">Outline Buttons</h5>
+                                    <div class="d-flex flex-wrap gap-2 mb-4">
+                                        <button type="button" class="btn btn-outline-primary">Primary</button>
+                                        <button type="button" class="btn btn-outline-success">Success</button>
+                                        <button type="button" class="btn btn-outline-danger">Danger</button>
+                                    </div>
+                                    
+                                    <h5 class="fw-bold mb-3">Button Sizes</h5>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <button type="button" class="btn btn-primary btn-sm">Small</button>
+                                        <button type="button" class="btn btn-primary">Default</button>
+                                        <button type="button" class="btn btn-primary btn-lg">Large</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="code-example bg-dark rounded p-4">
+                                        <pre class="text-light mb-0"><code>&lt;!-- Basic Buttons --&gt;
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+
+&lt;!-- Outline Buttons --&gt;
+&lt;button class="btn btn-outline-primary"&gt;
+  Outline Primary
+&lt;/button&gt;
+
+&lt;!-- Button Sizes --&gt;
+&lt;button class="btn btn-primary btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cards Tab -->
+                        <div class="tab-pane fade" id="cards" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h4 class="fw-bold mb-3">Basic Card</h4>
+                                    <div class="card" style="width: 100%; max-width: 300px;">
+                                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Card image">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="code-example bg-dark rounded p-4">
+                                        <pre class="text-light mb-0"><code>&lt;div class="card"&gt;
+  &lt;img src="..." class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+    &lt;p class="card-text"&gt;
+      Some quick example text...
+    &lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;
+      Go somewhere
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Forms Tab -->
+                        <div class="tab-pane fade" id="forms" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h4 class="fw-bold mb-3">Form Controls</h4>
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="exampleEmail" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="exampleEmail" placeholder="name@example.com">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleSelect" class="form-label">Example select</label>
+                                            <select class="form-select" id="exampleSelect">
+                                                <option>Open this select menu</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleTextarea" class="form-label">Example textarea</label>
+                                            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck">
+                                            <label class="form-check-label" for="exampleCheck">
+                                                Check me out
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="code-example bg-dark rounded p-4">
+                                        <pre class="text-light mb-0"><code>&lt;div class="mb-3"&gt;
+  &lt;label for="email" class="form-label"&gt;
+    Email address
+  &lt;/label&gt;
+  &lt;input type="email" class="form-control" 
+         id="email"&gt;
+&lt;/div&gt;
+
+&lt;div class="mb-3"&gt;
+  &lt;label for="select" class="form-label"&gt;
+    Example select
+  &lt;/label&gt;
+  &lt;select class="form-select" id="select"&gt;
+    &lt;option&gt;Choose...&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alerts Tab -->
+                        <div class="tab-pane fade" id="alerts" role="tabpanel">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h4 class="fw-bold mb-3">Alert Types</h4>
+                                    <div class="alert alert-primary" role="alert">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        A simple primary alert—check it out!
+                                    </div>
+                                    <div class="alert alert-success" role="alert">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        A simple success alert—check it out!
+                                    </div>
+                                    <div class="alert alert-warning" role="alert">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        A simple warning alert—check it out!
+                                    </div>
+                                    <div class="alert alert-danger" role="alert">
+                                        <i class="fas fa-times-circle me-2"></i>
+                                        A simple danger alert—check it out!
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="code-example bg-dark rounded p-4">
+                                        <pre class="text-light mb-0"><code>&lt;div class="alert alert-primary" role="alert"&gt;
+  A simple primary alert!
+&lt;/div&gt;
+
+&lt;div class="alert alert-success" role="alert"&gt;
+  A simple success alert!
+&lt;/div&gt;
+
+&lt;div class="alert alert-warning" role="alert"&gt;
+  A simple warning alert!
+&lt;/div&gt;
+
+&lt;div class="alert alert-danger" role="alert"&gt;
+  A simple danger alert!
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Utilities Section -->
+    <section id="utilities" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">
+                        <i class="fas fa-tools text-primary me-3"></i>
+                        Bootstrap Utilities
+                    </h2>
+                    <p class="lead text-muted">
+                        Utility classes giúp styling nhanh chóng mà không cần viết CSS
+                    </p>
+                </div>
+            </div>
+
+            <!-- Utility Categories -->
+            <div class="row g-4">
+                <!-- Spacing -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-arrows-alt me-2"></i>
+                                Spacing (Margin & Padding)
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="utility-demo mb-3">
+                                <div class="p-3 bg-light border">
+                                    <div class="bg-primary text-white p-3 m-3 text-center">m-3 (margin)</div>
+                                </div>
+                                <div class="p-3 bg-light border">
+                                    <div class="bg-success text-white p-4 text-center">p-4 (padding)</div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Property</th>
+                                            <th>Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>m-1</code></td>
+                                            <td>margin</td>
+                                            <td>0.25rem</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>p-3</code></td>
+                                            <td>padding</td>
+                                            <td>1rem</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>mt-2</code></td>
+                                            <td>margin-top</td>
+                                            <td>0.5rem</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>px-4</code></td>
+                                            <td>padding-x</td>
+                                            <td>1.5rem</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colors -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-palette me-2"></i>
+                                Colors
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="utility-demo mb-3">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="p-2 bg-primary text-white text-center small">bg-primary</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-2 bg-success text-white text-center small">bg-success</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-2 border text-primary text-center small">text-primary</div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-2 border text-danger text-center small">text-danger</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Background</th>
+                                            <th>Text</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>bg-primary</code></td>
+                                            <td><code>text-primary</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>bg-success</code></td>
+                                            <td><code>text-success</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>bg-warning</code></td>
+                                            <td><code>text-warning</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>bg-danger</code></td>
+                                            <td><code>text-danger</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flexbox -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-arrows-alt-h me-2"></i>
+                                Flexbox Utilities
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="utility-demo mb-3">
+                                <div class="d-flex justify-content-between align-items-center p-3 bg-light border mb-2">
+                                    <span class="badge bg-primary">Item 1</span>
+                                    <span class="badge bg-secondary">Item 2</span>
+                                    <span class="badge bg-success">Item 3</span>
+                                </div>
+                                <small class="text-muted">d-flex justify-content-between align-items-center</small>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Effect</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>d-flex</code></td>
+                                            <td>display: flex</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>justify-content-center</code></td>
+                                            <td>Center horizontally</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>align-items-center</code></td>
+                                            <td>Center vertically</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>flex-wrap</code></td>
+                                            <td>Allow wrapping</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display & Position -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">
+                                <i class="fas fa-eye me-2"></i>
+                                Display & Position
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="utility-demo mb-3">
+                                <div class="position-relative p-3 bg-light border" style="height: 100px;">
+                                    <div class="position-absolute top-0 start-0 badge bg-primary">top-start</div>
+                                    <div class="position-absolute top-0 end-0 badge bg-success">top-end</div>
+                                    <div class="position-absolute bottom-0 start-50 translate-middle-x badge bg-info">bottom-center</div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Effect</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>d-none</code></td>
+                                            <td>Hide element</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>d-block</code></td>
+                                            <td>Block display</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>position-relative</code></td>
+                                            <td>Relative positioning</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>position-absolute</code></td>
+                                            <td>Absolute positioning</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section id="practice" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">
+                        <i class="fas fa-laptop-code text-primary me-3"></i>
+                        Thực hành Bootstrap
+                    </h2>
+                    <p class="lead text-muted">
+                        Tạo các layout thực tế với Bootstrap components
+                    </p>
+                </div>
+            </div>
+
+            <!-- Practice Project -->
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-project-diagram me-2"></i>
+                        Dự án: Landing Page với Bootstrap
+                    </h3>
+                </div>
+                <div class="card-body p-0">
+                    <!-- Preview -->
+                    <div class="p-4 bg-light border-bottom">
+                        <h5 class="fw-bold mb-3">Preview:</h5>
+                        <div class="border rounded bg-white" style="height: 400px; overflow-y: auto;">
+                            <!-- Mini Landing Page -->
+                            <nav class="navbar navbar-expand navbar-dark bg-dark">
+                                <div class="container-fluid">
+                                    <a class="navbar-brand" href="#">MyBrand</a>
+                                    <div class="navbar-nav ms-auto">
+                                        <a class="nav-link" href="#">Home</a>
+                                        <a class="nav-link" href="#">About</a>
+                                        <a class="nav-link" href="#">Contact</a>
+                                    </div>
+                                </div>
+                            </nav>
+                            
+                            <div class="container-fluid p-4">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h1 class="display-6 fw-bold">Welcome to MyBrand</h1>
+                                        <p class="lead">Create amazing websites with Bootstrap components and utilities.</p>
+                                        <button class="btn btn-primary btn-lg">Get Started</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Sign Up</h5>
+                                                <form>
+                                                    <div class="mb-2">
+                                                        <input type="email" class="form-control form-control-sm" placeholder="Email">
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <input type="password" class="form-control form-control-sm" placeholder="Password">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success btn-sm w-100">Sign Up</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-md-4">
+                                        <div class="text-center">
+                                            <i class="fas fa-rocket fa-2x text-primary mb-2"></i>
+                                            <h5>Fast</h5>
+                                            <p class="small text-muted">Lightning fast development</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center">
+                                            <i class="fas fa-mobile-alt fa-2x text-success mb-2"></i>
+                                            <h5>Responsive</h5>
+                                            <p class="small text-muted">Works on all devices</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center">
+                                            <i class="fas fa-heart fa-2x text-danger mb-2"></i>
+                                            <h5>Beautiful</h5>
+                                            <p class="small text-muted">Modern and clean design</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Code -->
+                    <div class="p-4">
+                        <h5 class="fw-bold mb-3">HTML Code:</h5>
+                        <div class="code-example bg-dark rounded p-4">
+                            <pre class="text-light mb-0 small"><code>&lt;!-- Navigation --&gt;
+&lt;nav class="navbar navbar-expand navbar-dark bg-dark"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;MyBrand&lt;/a&gt;
+    &lt;div class="navbar-nav ms-auto"&gt;
+      &lt;a class="nav-link" href="#"&gt;Home&lt;/a&gt;
+      &lt;a class="nav-link" href="#"&gt;About&lt;/a&gt;
+      &lt;a class="nav-link" href="#"&gt;Contact&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;!-- Hero Section --&gt;
+&lt;div class="container-fluid p-4"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-8"&gt;
+      &lt;h1 class="display-6 fw-bold"&gt;Welcome to MyBrand&lt;/h1&gt;
+      &lt;p class="lead"&gt;Create amazing websites with Bootstrap.&lt;/p&gt;
+      &lt;button class="btn btn-primary btn-lg"&gt;Get Started&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;h5 class="card-title"&gt;Sign Up&lt;/h5&gt;
+          &lt;form&gt;
+            &lt;div class="mb-2"&gt;
+              &lt;input type="email" class="form-control" placeholder="Email"&gt;
+            &lt;/div&gt;
+            &lt;div class="mb-2"&gt;
+              &lt;input type="password" class="form-control" placeholder="Password"&gt;
+            &lt;/div&gt;
+            &lt;button type="submit" class="btn btn-success w-100"&gt;Sign Up&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Features --&gt;
+  &lt;div class="row mt-4"&gt;
+    &lt;div class="col-md-4"&gt;
+      &lt;div class="text-center"&gt;
+        &lt;i class="fas fa-rocket fa-2x text-primary mb-2"&gt;&lt;/i&gt;
+        &lt;h5&gt;Fast&lt;/h5&gt;
+        &lt;p class="text-muted"&gt;Lightning fast development&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- More columns... --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Exercises -->
+            <div class="mt-5">
+                <h3 class="fw-bold mb-4">Bài tập thực hành</h3>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-primary fs-6 me-3">1</span>
+                                    <h5 class="mb-0">Card Layout</h5>
+                                </div>
+                                <p class="text-muted">Tạo một grid 3x3 các card với hình ảnh, tiêu đề và nút action.</p>
+                                <div class="mt-auto">
+                                    <span class="badge bg-secondary">Easy</span>
+                                    <span class="badge bg-outline-primary">Grid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-warning fs-6 me-3">2</span>
+                                    <h5 class="mb-0">Navigation Bar</h5>
+                                </div>
+                                <p class="text-muted">Xây dựng navigation responsive với dropdown menu và search form.</p>
+                                <div class="mt-auto">
+                                    <span class="badge bg-warning">Medium</span>
+                                    <span class="badge bg-outline-primary">Components</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <span class="badge bg-danger fs-6 me-3">3</span>
+                                    <h5 class="mb-0">Dashboard</h5>
+                                </div>
+                                <p class="text-muted">Tạo admin dashboard với sidebar, charts và data tables.</p>
+                                <div class="mt-auto">
+                                    <span class="badge bg-danger">Hard</span>
+                                    <span class="badge bg-outline-primary">Layout</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-4">🎉 Tóm tắt bài học</h2>
+                    <p class="lead text-muted mb-5">
+                        Bạn đã học được những kiến thức cơ bản về Bootstrap Framework
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="bg-primary bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-th fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold">Grid System</h5>
+                        <p class="text-muted small">12-column responsive grid với breakpoints</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-cubes fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold">Components</h5>
+                        <p class="text-muted small">Buttons, cards, forms, alerts và nhiều hơn nữa</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="bg-info bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-tools fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold">Utilities</h5>
+                        <p class="text-muted small">Spacing, colors, flexbox và display utilities</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="bg-warning bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-mobile-alt fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold">Responsive</h5>
+                        <p class="text-muted small">Mobile-first approach với breakpoint system</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <div class="card border-0 shadow-sm d-inline-block">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-3">🚀 Bước tiếp theo</h4>
+                        <p class="mb-3">Tiếp tục học JavaScript để tương tác với Bootstrap components</p>
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-arrow-right me-2"></i>
+                            Sang bài tiếp theo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fab fa-bootstrap me-2"></i>
+                        Bootstrap Learning
+                    </h5>
+                    <p class="text-light">
+                        Học Bootstrap framework hiệu quả với các ví dụ thực tế và bài tập tương tác.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Nội dung bài học</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#introduction" class="text-light text-decoration-none">Giới thiệu Bootstrap</a></li>
+                        <li><a href="#grid-system" class="text-light text-decoration-none">Grid System</a></li>
+                        <li><a href="#components" class="text-light text-decoration-none">Components</a></li>
+                        <li><a href="#utilities" class="text-light text-decoration-none">Utilities</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="fw-bold mb-3">Tài nguyên</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://getbootstrap.com/" class="text-light text-decoration-none" target="_blank">
+                            <i class="fas fa-external-link-alt me-1"></i>Bootstrap Documentation
+                        </a></li>
+                        <li><a href="https://getbootstrap.com/docs/5.3/examples/" class="text-light text-decoration-none" target="_blank">
+                            <i class="fas fa-external-link-alt me-1"></i>Bootstrap Examples
+                        </a></li>
+                        <li><a href="https://bootstrapmade.com/" class="text-light text-decoration-none" target="_blank">
+                            <i class="fas fa-external-link-alt me-1"></i>Bootstrap Templates
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Frontend Learning. Made with ❤️ for Vietnamese developers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

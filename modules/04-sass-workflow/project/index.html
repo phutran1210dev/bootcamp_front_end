@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sass Project · Design Token Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h1 class="sidebar__title">TokenLab</h1>
+    <nav class="sidebar__nav">
+      <a class="is-active" href="#overview">Tổng quan</a>
+      <a href="#palettes">Bảng màu</a>
+      <a href="#typography">Typography</a>
+      <a href="#spacing">Spacing scale</a>
+    </nav>
+    <button class="sidebar__cta">Xuất SCSS</button>
+  </aside>
+
+  <main class="dashboard">
+    <header class="dashboard__hero" id="overview">
+      <div>
+        <p class="eyebrow">Project real-world</p>
+        <h2>Thiết kế dashboard quản lý token với Sass modules</h2>
+        <p>Sử dụng partial, function và map để duy trì hệ thống thiết kế nhất quán.</p>
+      </div>
+      <div class="hero__actions">
+        <button class="btn btn--primary">Tạo token</button>
+        <button class="btn btn--ghost">Import từ JSON</button>
+      </div>
+    </header>
+
+    <section class="panel" id="palettes">
+      <header class="panel__header">
+        <h3>Bảng màu</h3>
+        <span class="badge badge--info">4 bảng màu</span>
+      </header>
+      <div class="palette-grid">
+        <article class="palette-card">
+          <h4>Primary</h4>
+          <div class="palette-card__swatches">
+            <span class="swatch" data-token="primary-100"></span>
+            <span class="swatch" data-token="primary-300"></span>
+            <span class="swatch" data-token="primary-500"></span>
+            <span class="swatch" data-token="primary-700"></span>
+          </div>
+        </article>
+        <article class="palette-card">
+          <h4>Secondary</h4>
+          <div class="palette-card__swatches">
+            <span class="swatch" data-token="secondary-100"></span>
+            <span class="swatch" data-token="secondary-300"></span>
+            <span class="swatch" data-token="secondary-500"></span>
+            <span class="swatch" data-token="secondary-700"></span>
+          </div>
+        </article>
+        <article class="palette-card">
+          <h4>Success</h4>
+          <div class="palette-card__swatches">
+            <span class="swatch" data-token="success-100"></span>
+            <span class="swatch" data-token="success-300"></span>
+            <span class="swatch" data-token="success-500"></span>
+            <span class="swatch" data-token="success-700"></span>
+          </div>
+        </article>
+        <article class="palette-card">
+          <h4>Neutral</h4>
+          <div class="palette-card__swatches">
+            <span class="swatch" data-token="neutral-100"></span>
+            <span class="swatch" data-token="neutral-300"></span>
+            <span class="swatch" data-token="neutral-500"></span>
+            <span class="swatch" data-token="neutral-700"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="typography">
+      <header class="panel__header">
+        <h3>Typography scale</h3>
+        <span class="badge badge--success">Sẵn sàng</span>
+      </header>
+      <div class="type-grid">
+        <article class="type-card" data-step="Display">
+          <h1>Display</h1>
+          <p>72px · sử dụng cho hero headline.</p>
+        </article>
+        <article class="type-card" data-step="Heading">
+          <h2>Heading</h2>
+          <p>36px · sử dụng cho tiêu đề section.</p>
+        </article>
+        <article class="type-card" data-step="Body">
+          <p>Body text</p>
+          <p>16px · body copy, line-height 1.6.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="spacing">
+      <header class="panel__header">
+        <h3>Spacing scale</h3>
+        <span class="badge">8pt system</span>
+      </header>
+      <ul class="spacing-list">
+        <li data-token="space-2">8px</li>
+        <li data-token="space-4">16px</li>
+        <li data-token="space-6">24px</li>
+        <li data-token="space-8">32px</li>
+        <li data-token="space-10">40px</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conference Landing - Bootstrap Essentials</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: linear-gradient(135deg, rgba(76, 110, 245, 0.92), rgba(79, 70, 229, 0.92)),
+        url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: #fff;
+    }
+    .schedule-card {
+      border-radius: 1.5rem;
+      border: none;
+      box-shadow: 0 24px 70px -40px rgba(15, 23, 42, 0.55);
+    }
+    .speaker-card img {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+    .pricing-card {
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: transform .25s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-6px);
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <header class="hero py-5 py-lg-6 text-center text-lg-start">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge bg-white text-primary mb-3">Bootcamp Project</span>
+          <h1 class="display-5 fw-bold mb-3">FutureFront 2024</h1>
+          <p class="lead mb-4">Sự kiện quy tụ chuyên gia frontend với workshop thực hành Bootstrap, Sass và tối ưu hiệu suất.</p>
+          <div class="d-flex flex-column flex-sm-row gap-3">
+            <a class="btn btn-warning btn-lg px-4" href="#tickets">Đặt vé ngay</a>
+            <a class="btn btn-outline-light btn-lg px-4" href="#speakers">Danh sách diễn giả</a>
+          </div>
+        </div>
+        <div class="col-lg-5 ms-lg-auto">
+          <div class="card border-0 shadow-lg rounded-4">
+            <div class="card-body p-4">
+              <h2 class="h4 fw-semibold mb-3">Đăng ký nhận tài liệu miễn phí</h2>
+              <form class="row g-3 needs-validation" novalidate>
+                <div class="col-12">
+                  <label class="form-label" for="name">Họ tên</label>
+                  <input class="form-control form-control-lg" id="name" required>
+                  <div class="invalid-feedback">Hãy nhập tên của bạn.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="email">Email</label>
+                  <input class="form-control form-control-lg" id="email" type="email" required>
+                  <div class="invalid-feedback">Email chưa đúng định dạng.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="track">Chọn track</label>
+                  <select class="form-select form-select-lg" id="track" required>
+                    <option selected disabled value="">Chọn chủ đề</option>
+                    <option>Bootstrap &amp; Design System</option>
+                    <option>Sass Automation</option>
+                    <option>Tailwind + React</option>
+                  </select>
+                  <div class="invalid-feedback">Vui lòng chọn một track.</div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary btn-lg w-100" type="submit">Nhận tài liệu</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-5 my-4">
+    <section id="schedule" class="mb-5">
+      <h2 class="h3 fw-semibold text-center mb-4">Lịch trình nổi bật</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card schedule-card p-4">
+            <span class="badge bg-primary-subtle text-primary mb-2">08:30</span>
+            <h3 class="h5">Keynote: Crafting delightful UI</h3>
+            <p class="text-muted">Tư duy thiết kế và nghiên cứu hành vi người dùng.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card schedule-card p-4">
+            <span class="badge bg-success-subtle text-success mb-2">10:30</span>
+            <h3 class="h5">Workshop: Bootstrap trong dự án thực tế</h3>
+            <p class="text-muted">Code-along xây dựng dashboard quản trị.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card schedule-card p-4">
+            <span class="badge bg-warning-subtle text-warning mb-2">14:00</span>
+            <h3 class="h5">Panel: Tối ưu hiệu suất frontend</h3>
+            <p class="text-muted">Bí kíp từ các CTO tại startup công nghệ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="speakers" class="mb-5">
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-4">
+        <h2 class="h3 fw-semibold mb-0">Diễn giả chính</h2>
+        <a class="btn btn-outline-primary" href="#">Xem tất cả</a>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card speaker-card border-0 shadow-sm p-4">
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80" alt="Chân dung diễn giả">
+              <div>
+                <h3 class="h6 mb-1">Nguyễn Hà Vy</h3>
+                <span class="text-muted small">Lead Product Designer · VNG</span>
+              </div>
+            </div>
+            <p class="small text-muted mt-3">Chia sẻ kinh nghiệm triển khai design system đa nền tảng.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card speaker-card border-0 shadow-sm p-4">
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="Chân dung diễn giả">
+              <div>
+                <h3 class="h6 mb-1">Trần Minh Khoa</h3>
+                <span class="text-muted small">Frontend Architect · Tiki</span>
+              </div>
+            </div>
+            <p class="small text-muted mt-3">Phân tích cấu trúc component linh hoạt với Bootstrap 5.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card speaker-card border-0 shadow-sm p-4">
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80" alt="Chân dung diễn giả">
+              <div>
+                <h3 class="h6 mb-1">Lê Minh Hoàng</h3>
+                <span class="text-muted small">Engineering Manager · Be Group</span>
+              </div>
+            </div>
+            <p class="small text-muted mt-3">Chia sẻ chiến lược phối hợp giữa design team &amp; engineering.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tickets" class="mb-5">
+      <h2 class="h3 fw-semibold text-center mb-4">Gói vé tham dự</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card pricing-card h-100 p-4">
+            <span class="badge bg-secondary-subtle text-secondary w-auto mb-3">Basic</span>
+            <h3 class="h4">890.000đ</h3>
+            <ul class="list-unstyled text-muted small mb-4">
+              <li>✔ Truy cập toàn bộ talk</li>
+              <li>✔ Slide &amp; template</li>
+              <li>✖ Workshop nâng cao</li>
+            </ul>
+            <a class="btn btn-outline-primary w-100" href="#">Chọn gói</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card pricing-card h-100 p-4 border-primary border-2">
+            <span class="badge bg-primary w-auto mb-3">Popular</span>
+            <h3 class="h4">1.490.000đ</h3>
+            <ul class="list-unstyled text-muted small mb-4">
+              <li>✔ Ghế ngồi ưu tiên</li>
+              <li>✔ Workshop Bootstrap thực hành</li>
+              <li>✔ Bữa trưa networking</li>
+            </ul>
+            <a class="btn btn-primary w-100" href="#">Đăng ký ngay</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card pricing-card h-100 p-4">
+            <span class="badge bg-warning-subtle text-warning w-auto mb-3">Team</span>
+            <h3 class="h4">4.190.000đ</h3>
+            <ul class="list-unstyled text-muted small mb-4">
+              <li>✔ 4 vé tham dự</li>
+              <li>✔ Phòng workshop riêng</li>
+              <li>✔ Mentoring 1-1</li>
+            </ul>
+            <a class="btn btn-outline-primary w-100" href="#">Đặt gói đội nhóm</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-5 bg-dark text-white text-center">
+    <div class="container">
+      <p class="mb-1">FutureFront 2024 · Tổ chức bởi Frontend Bootcamp.</p>
+      <small class="text-secondary">Theo dõi chúng tôi trên Youtube &amp; Newsletter để nhận cập nhật mới.</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      const form = document.querySelector('.needs-validation');
+      form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    })();
+  </script>
+</body>
+</html>

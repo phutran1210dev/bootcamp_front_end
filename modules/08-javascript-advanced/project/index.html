@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced JS Project · Cohort Insights</title>
+  <style>
+    body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: #020617; color: #e2e8f0; min-height: 100vh; display: grid; place-items: center; padding: 3rem 1rem; }
+    .app { width: min(960px, 100%); background: rgba(15, 23, 42, 0.85); border-radius: 32px; padding: 3rem; box-shadow: 0 50px 140px -70px rgba(15, 23, 42, 1); display: grid; gap: 2.5rem; }
+    header h1 { margin: 0; font-size: clamp(2.2rem, 4vw, 3rem); }
+    header p { color: #cbd5f5; max-width: 560px; }
+    .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .metric { background: rgba(148, 163, 184, 0.1); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.2); display: grid; gap: 0.5rem; }
+    .metric span { font-size: 0.75rem; letter-spacing: 0.2em; color: #94a3b8; text-transform: uppercase; }
+    .metric strong { font-size: 2.2rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(148, 163, 184, 0.12); }
+    th { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.2em; color: #94a3b8; }
+    tbody tr:hover { background: rgba(99, 102, 241, 0.1); }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+    select { padding: 0.75rem 1rem; border-radius: 14px; border: 1px solid rgba(148, 163, 184, 0.35); background: rgba(15, 23, 42, 0.6); color: inherit; }
+    .insights { display: grid; gap: 1rem; background: rgba(148, 163, 184, 0.1); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(148, 163, 184, 0.2); }
+  </style>
+</head>
+<body>
+  <section class="app">
+    <header>
+      <p style="letter-spacing:0.3em;text-transform:uppercase;color:#94a3b8;font-size:0.75rem;margin:0 0 0.5rem;">Module nâng cao</p>
+      <h1>Phân tích dữ liệu Cohort</h1>
+      <p>Áp dụng class, module pattern và array methods nâng cao để phân tích dữ liệu học viên.</p>
+    </header>
+
+    <section class="grid" id="metrics"></section>
+
+    <section>
+      <div class="filter-bar">
+        <h2 style="margin:0;font-size:1.4rem;">Danh sách học viên</h2>
+        <div>
+          <select id="levelFilter">
+            <option value="all">Tất cả cấp độ</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <select id="trackFilter">
+            <option value="all">Tất cả track</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+            <option value="fullstack">Fullstack</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-wrapper" style="overflow-x:auto;margin-top:1rem;">
+        <table>
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Cấp độ</th>
+              <th>Track</th>
+              <th>Điểm trung bình</th>
+              <th>Bài nộp</th>
+            </tr>
+          </thead>
+          <tbody id="studentBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="insights" id="insights">
+      <h2 style="margin:0;font-size:1.4rem;">Insight</h2>
+      <p>Chọn bộ lọc để xem insight cập nhật theo dữ liệu đã lọc.</p>
+    </section>
+  </section>
+
+  <script type="module">
+    class CohortService {
+      #students;
+      constructor(dataset) {
+        this.#students = dataset;
+      }
+
+      list(filters = {}) {
+        return this.#students.filter((student) => {
+          const levelMatch = filters.level === 'all' || filters.level === student.level;
+          const trackMatch = filters.track === 'all' || filters.track === student.track;
+          return levelMatch && trackMatch;
+        });
+      }
+
+      metrics(students) {
+        const total = students.length;
+        const avgScore = total ? (students.reduce((sum, item) => sum + item.averageScore, 0) / total).toFixed(1) : 0;
+        const completion = total ? Math.round((students.reduce((sum, item) => sum + item.assignmentsDone, 0) / (total * 10)) * 100) : 0;
+        return {
+          total,
+          avgScore,
+          completion,
+          advanced: students.filter((s) => s.level === 'advanced').length
+        };
+      }
+
+      insight(students) {
+        if (!students.length) return 'Không có dữ liệu cho bộ lọc hiện tại.';
+        const top = students.toSorted((a, b) => b.averageScore - a.averageScore)[0];
+        const commitment = students
+          .map((student) => ({ name: student.name, ratio: (student.assignmentsDone / 10) * 100 }))
+          .toSorted((a, b) => b.ratio - a.ratio)[0];
+        return `${top.name} đang dẫn đầu với điểm trung bình ${top.averageScore}. ${commitment.name} hoàn thành ${commitment.ratio.toFixed(0)}% bài tập.`;
+      }
+    }
+
+    const DATASET = [
+      { name: 'Lan Anh', level: 'beginner', track: 'frontend', averageScore: 7.8, assignmentsDone: 8 },
+      { name: 'Quốc Huy', level: 'intermediate', track: 'frontend', averageScore: 8.6, assignmentsDone: 9 },
+      { name: 'Minh Trang', level: 'advanced', track: 'frontend', averageScore: 9.2, assignmentsDone: 10 },
+      { name: 'Đức Hiếu', level: 'intermediate', track: 'backend', averageScore: 8.1, assignmentsDone: 7 },
+      { name: 'Hồng Ngọc', level: 'advanced', track: 'fullstack', averageScore: 9.4, assignmentsDone: 9 },
+      { name: 'Trí Dũng', level: 'beginner', track: 'frontend', averageScore: 7.2, assignmentsDone: 6 },
+      { name: 'Thu Uyên', level: 'intermediate', track: 'fullstack', averageScore: 8.5, assignmentsDone: 8 }
+    ];
+
+    const service = new CohortService(DATASET);
+    const levelFilter = document.getElementById('levelFilter');
+    const trackFilter = document.getElementById('trackFilter');
+    const studentBody = document.getElementById('studentBody');
+    const metricsEl = document.getElementById('metrics');
+    const insightEl = document.getElementById('insights');
+
+    function render() {
+      const filters = { level: levelFilter.value, track: trackFilter.value };
+      const students = service.list(filters);
+      const metrics = service.metrics(students);
+
+      metricsEl.innerHTML = `
+        <article class="metric"><span>Tổng học viên</span><strong>${metrics.total}</strong></article>
+        <article class="metric"><span>Điểm trung bình</span><strong>${metrics.avgScore}</strong></article>
+        <article class="metric"><span>Tỉ lệ hoàn thành</span><strong>${metrics.completion}%</strong></article>
+        <article class="metric"><span>Số advanced</span><strong>${metrics.advanced}</strong></article>
+      `;
+
+      studentBody.innerHTML = students.map((student) => `
+        <tr>
+          <td>${student.name}</td>
+          <td>${student.level}</td>
+          <td>${student.track}</td>
+          <td>${student.averageScore}</td>
+          <td>${student.assignmentsDone}/10</td>
+        </tr>
+      `).join('');
+
+      insightEl.innerHTML = `<h2 style="margin:0;font-size:1.4rem;">Insight</h2><p>${service.insight(students)}</p>`;
+    }
+
+    levelFilter.addEventListener('change', render);
+    trackFilter.addEventListener('change', render);
+
+    render();
+  </script>
+</body>
+</html>

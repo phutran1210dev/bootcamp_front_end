@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Advanced Demo</title>
+  <style>
+    body { margin: 0; font-family: "Inter", system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; display: grid; place-items: center; }
+    .shell { width: min(640px, 92vw); background: rgba(15, 23, 42, 0.75); padding: 2.75rem; border-radius: 28px; box-shadow: 0 35px 100px -55px rgba(15, 23, 42, 0.95); display: grid; gap: 1.75rem; }
+    h1 { margin: 0; }
+    pre { background: rgba(15, 23, 42, 0.9); padding: 1.25rem; border-radius: 18px; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; }
+    .btn { border: none; border-radius: 999px; padding: 0.75rem 1.8rem; background: linear-gradient(120deg, #f97316, #fb923c); color: #fff; font-weight: 600; cursor: pointer; justify-self: start; }
+    .log { background: rgba(15, 23, 42, 0.9); border-radius: 18px; min-height: 120px; padding: 1.5rem; font-family: 'Fira Code', monospace; }
+  </style>
+</head>
+<body>
+  <section class="shell">
+    <header>
+      <h1>Mô phỏng pattern Observer</h1>
+      <p>Ví dụ minh họa cách sử dụng class, private field và custom event để quản lý trạng thái.</p>
+    </header>
+    <pre><code>class Store {
+  #listeners = new Set();
+  state = { lessons: [] };
+
+  subscribe(listener) {
+    this.#listeners.add(listener);
+    listener(this.state);
+    return () => this.#listeners.delete(listener);
+  }
+
+  addLesson(lesson) {
+    this.state = { ...this.state, lessons: [...this.state.lessons, lesson] };
+    this.#listeners.forEach((listener) => listener(this.state));
+  }
+}
+</code></pre>
+    <button class="btn" id="add">Thêm bài học</button>
+    <div class="log" id="log"></div>
+  </section>
+  <script type="module">
+    class Store {
+      #listeners = new Set();
+      state = { lessons: [] };
+
+      subscribe(listener) {
+        this.#listeners.add(listener);
+        listener(this.state);
+        return () => this.#listeners.delete(listener);
+      }
+
+      addLesson(lesson) {
+        this.state = { ...this.state, lessons: [...this.state.lessons, lesson] };
+        this.#listeners.forEach((listener) => listener(this.state));
+      }
+    }
+
+    const store = new Store();
+    const log = document.getElementById('log');
+    const lessons = ['Module Sass nâng cao', 'Tailwind thực chiến', 'AJAX và API'];
+    let index = 0;
+
+    store.subscribe((state) => {
+      log.textContent = state.lessons.map((lesson, idx) => `${idx + 1}. ${lesson}`).join('\n');
+    });
+
+    document.getElementById('add').addEventListener('click', () => {
+      const lesson = lessons[index % lessons.length];
+      store.addLesson(lesson);
+      index++;
+    });
+  </script>
+</body>
+</html>
